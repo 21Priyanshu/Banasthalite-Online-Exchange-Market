@@ -1,0 +1,110 @@
+body
+{
+background-color:lightgrey;
+background-image:url("images/ecom1.webp"); 
+
+background-size:cover ;
+position:absolute;
+/*overflow:scroll; */
+}
+/*.design
+{
+margin-left:400px;
+margin-top:300px;
+
+}
+.design > img
+{
+	height:400px;
+width:100%;
+}*/
+.one
+{
+	top:15px;
+	position:absolute;
+	left:30px;
+	color:black;
+	font-weight:700;
+	font:30px;
+	
+}
+#nav
+{
+	height:auto;
+	width:auto;
+	position:relative;
+	left:550px;
+}
+#nav ul 
+{
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+
+#nav ul  li a
+{
+	
+	text-decoration:none;
+	font-size:25px;
+	background-color:transparent;
+	display:block;
+	margin:1px;
+	width:190px;
+	padding:10px 20px;
+	color:white;
+	font-weight:600;
+	text-align:center;
+}
+#nav ul li a:hover
+{
+	text-decoration:underline;
+	/*background-color:white;
+	color:blue;*/
+	font-size:30px;
+	/*box-shadow:2px 2px 3px black;*/
+}
+#nav ul li
+{	display:inline;
+	float:left;
+}
+#nav ul li ul
+{
+	position:absolute;
+	z-index:1000;
+	display:none;
+}
+#nav ul li ul li
+{
+	display:block;
+	float:none;
+}
+#nav ul li:hover ul
+{
+	display:block;
+}
+.detail
+{
+	margin:2px;
+	border:black;
+	padding:10px;
+	
+}
+.container
+			{
+				display:flex; 
+				flex-direction:row;
+				justify-content:space-around;
+				flex-wrap:wrap;
+				width:100%;
+				height:auto;
+			}
+.panel-footer{
+		background-color:rgb(54, 69, 79);
+		color:white;
+		padding:10px 15px;
+		border-top:1px solid grey;
+		border-bottom-right-radius:3px;
+		border-bottom-left-radius:3px;
+		
+		}
