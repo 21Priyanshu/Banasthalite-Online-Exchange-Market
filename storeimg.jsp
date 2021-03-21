@@ -3,22 +3,17 @@
     Created on : 9 Mar, 2021, 4:45:51 PM
     Author     : HP
 --%>
-
+import javax.servlet.annotation.MultipartConfig;
 <%@page import="java.io.InputStream"%>
 <%@page import="java.io.FileInputStream"%>
 <%@page import="java.io.File"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="myprojectdb.DbConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%--@MultipartConfig(fileSizeThreshold=1024*1024*2,
+@MultipartConfig(fileSizeThreshold=1024*1024*2,
                    maxFileSize = 1024*1024*10,
-                   maxRequestSize =1024*1024*50);--%>
-<multipart-config>
-      <location>/tmp</location>
-      <max-file-size>20848820</max-file-size>
-      <max-request-size>418018841</max-request-size>
-      <file-size-threshold>1048576</file-size-threshold>
- </multipart-config>
+                   maxRequestSize =1024*1024*50);
+
 <!DOCTYPE html>
 <html>
     <head>
