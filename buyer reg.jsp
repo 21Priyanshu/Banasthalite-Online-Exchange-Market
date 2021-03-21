@@ -1,8 +1,3 @@
-<%-- 
-    Document   : buyer reg
-    Created on : 9 Mar, 2021, 3:19:23 PM
-    Author     : HP
---%>
 <%@page import="myprojectdb.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>

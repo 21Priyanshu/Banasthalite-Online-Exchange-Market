@@ -1,0 +1,125 @@
+*{
+    margin: 0px;
+}  
+
+.bg{
+    background-color: blanchedalmond;
+}
+.navbar{
+    display: flex;
+    min-height: 50px;
+}
+
+.ham{
+    padding-top: 5px;
+}
+
+.vertical{
+    min-width: 200px;
+}
+
+.vertical ul {
+  list-style-type: none;
+  font-size: 20px;
+  font-family: sans-serif;
+  width: 100%;
+  background-color: #f1f1f1;      
+  /*position: fixed;*/
+  height: auto;
+  overflow: auto;
+}
+
+.vertical li a {
+  /*display: block;*/
+  color: #000;
+  text-decoration: none;
+}
+
+.vertical li a.active {
+  background-color: #4CAF50;
+  color: white;
+}
+.vertical li:hover{
+    background-color: #555;
+    color: whitesmoke;
+}
+.vertical li a:hover:not(.active) {
+  background-color: #555;
+  color: white;
+}
+.nav{
+    background-color: #99ffcc;
+}
+
+.line{
+    width: 25px;
+    background-color: black;
+    height: 2px;
+    margin: 5px 3px;
+}
+.r-navlist{
+    display: flex;
+}
+.r-navlist ul li{
+    padding-top: 5px;
+    font-weight: bolder;
+    list-style: none;
+    font-size: 25px;
+}
+
+.dropdown{
+    
+    /*display: block;*/
+    position: absolute;
+    padding-top: 10px;
+    right: 50px;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+/* Add a grey background color to dropdown links on hover */
+.dropdown-content a:hover {
+  background-color: #ddd;
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.bg_container{
+    display: flex;
+}
+
+.display{
+    background-color: red;
+    display: inline;
+/*    position: absolute;*/
+}
+.container{
+    display: flex;
+    border: 5px solid black;
+    background-color: blueviolet;
+}
+.item{
+    border: 2px solid white;
+    width: 300px;
+    height: 400px;
+}

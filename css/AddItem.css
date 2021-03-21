@@ -1,0 +1,15 @@
+body{
+    background-color: peachpuff;
+}
+.form{
+    padding-top: 50px;
+}
+
+.table{
+    
+    margin: auto;
+}
+
+.table tr td{
+    padding: 5px;
+}
