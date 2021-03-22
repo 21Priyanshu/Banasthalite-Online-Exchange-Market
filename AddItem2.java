@@ -15,22 +15,24 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import myproject.DbConnection;
+import myprojectdb.DbConnection;
 @MultipartConfig
-public class AddItems extends HttpServlet {
+public class AddItem2 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException, SQLException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
-           String name=request.getParameter("name");
+           String name=request.getParameter("itemname");
+           Part img =request.getPart("itemphotos");
+           String desc=request.getParameter("idescription");
             int price=Integer.parseInt(request.getParameter("price"));
             String category=request.getParameter("category");
-            String desc=request.getParameter("description");
-            Part img =request.getPart("img");
+            
+            
             try{
             String savePath="";
             String SAVE_DIR="images";
-            String path="C:\\Users\\Lenovo\\Documents\\NetBeansProjects\\FirstWebsite\\web" + File.separator+ SAVE_DIR;
+            String path="C:\\Users\\HP\\Documents\\NetBeansProjects\\Projectbv\\web" + File.separator+ SAVE_DIR;
             File file=new File(path);
             file.mkdir();
             String fileName = img.getSubmittedFileName();
@@ -49,13 +51,15 @@ public class AddItems extends HttpServlet {
             String DirPlusFileName=null;
             DirPlusFileName=SAVE_DIR+File.separator+fileName;
             DbConnection obj=new DbConnection();
-            PreparedStatement ps=obj.c.prepareStatement("insert into item(name,price,category,description,photo) values(?,?,?,?,?)");
+            PreparedStatement ps=obj.c.prepareStatement("insert into item(itemname,uid,itemphotos,idescription,price,category,item_available) values(?,?,?,?,?,?,?)");
             System.out.println(path);
             ps.setString(1, name);
-            ps.setInt(2, price); 
-            ps.setString(3,category);
+            ps.setString(2,"btbtc");
+            ps.setBoolean(7, true);
+            ps.setInt(5, price); 
+            ps.setString(6,category);
             ps.setString(4,desc);
-            ps.setString(5,DirPlusFileName);
+            ps.setString(3,DirPlusFileName);
             int i=ps.executeUpdate();
         System.out.println("Inserted Successfully");
             if(i==1)
@@ -82,7 +86,7 @@ public class AddItems extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(AddItem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddItem2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -100,7 +104,7 @@ public class AddItems extends HttpServlet {
         try {
             processRequest(request, response);
         } catch (SQLException ex) {
-            Logger.getLogger(AddItem.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(AddItem2.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 

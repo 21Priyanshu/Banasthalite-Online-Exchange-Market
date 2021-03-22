@@ -7,15 +7,32 @@
         <link href="css/AddItem.css" rel="stylesheet">
     </head>
     <body>
-        <form action="AddItems" method="post" enctype="multipart/form-data" class="form">
+        <form action="AddItem2" method="post" enctype="multipart/form-data" class="form">
             <table class="table">
                 <caption>Add Item</caption>
                 <tr>
                     <td>
-                        Name
+                        Item name
                     </td>
                     <td>
-                        <input type="text" name="name" placeholder="Cycle" required>
+                        <input type="text" name="itemname" placeholder="e.g.Cycle" required>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>
+                        Add Photo
+                    </td>
+                    <td>
+                        <input type="file" name="itemphotos" required>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        Description
+                    </td>
+                    <td>
+                        <input type="text" name="idescription" required>
                     </td>
                 </tr>
                 <tr>
@@ -34,22 +51,7 @@
                         <input type="text" name="category" required>
                     </td>
                 </tr>
-                <tr>
-                    <td>
-                        Description
-                    </td>
-                    <td>
-                        <input type="text" name="description" required>
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        Add Photo
-                    </td>
-                    <td>
-                        <input type="file" name="img" required>
-                    </td>
-                </tr>
+               
                 <tr>
                     <td></td>
                     <td>
