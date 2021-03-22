@@ -16,7 +16,7 @@
     </head>
     <body>
          <%
-            String u=request.getParameter("sname");
+            String u=request.getParameter("bname");
             String p=request.getParameter("password");
             DbConnection obj=new DbConnection();
             PreparedStatement ps=obj.c.prepareStatement("select *from buyer where sname=? and "+"password=?");
