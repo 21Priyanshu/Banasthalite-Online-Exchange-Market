@@ -1,0 +1,10 @@
+create table item(
+itemid int primary key generated always as identity,
+itemname varchar(30) not null,
+uid varchar(30) not null,
+itemphotos varchar(200) not null,
+idescription varchar(100) not null,
+price integer not null,
+category varchar(10) not null,
+item_available boolean not null
+);
