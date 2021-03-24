@@ -27,9 +27,7 @@
                 <button >Login
                 </button>
                 <div class="dropdown-content">
-                  <a href="#">Admin</a>
                   <a href="#">Buyer</a>
-                  <a href="#">Seller</a>
                 </div>
               </div>
         </div>
@@ -51,17 +49,27 @@ try{
     Class.forName("org.apache.derby.jdbc.ClientDriver");
     Connection conn=DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
     Statement stmt1=conn.createStatement();
-    ResultSet rs=stmt1.executeQuery("select * from item");
+    ResultSet rs=stmt1.executeQuery("select * from item1");
     while(rs.next()){%>
     <div class="container">
         <div class="item"><%
-           out.print("<img src="+rs.getString(5)+" width='100%' height='200px' alt='Tulips'/>");
+           out.print("<img src="+rs.getString(4)+" width='20%' height='200px' alt='Tulips'/>");
            out.print("<p>"+rs.getString(2) +"<p>"); 
-           out.print("<p>"+rs.getString(1) +"</p>");
-           out.print("<p>"+rs.getString(4) +"</p>");
-           out.print("</div");
+           out.print("<p>"+rs.getString(6) +"</p>");
+           out.print("<p>"+rs.getString(5) +"</p>");
+           %>
+           <form action="delete">
+               <button name="delete" value="<%out.print(rs.getString(1));%>">
+                   Delete
+               </button>
+               
+           </form>
+        </div>
+        <%
             }
-            out.print("</div>");
+            %>
+            </div>
+            <%
     }
 }
   catch(Exception ex){
