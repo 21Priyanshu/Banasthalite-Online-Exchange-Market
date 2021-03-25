@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.Part;
-import myprojectdb.DbConnection;
+import myproject.DbConnection;
 @MultipartConfig
 public class AddItem2 extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)

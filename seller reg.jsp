@@ -3,7 +3,7 @@
     Created on : 9 Mar, 2021, 3:19:23 PM
     Author     : HP
 --%>
-<%@page import="myprojectdb.DbConnection"%>
+<%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -39,7 +39,7 @@
             ps.setString(10, cno);
             int i=ps.executeUpdate();
             if(i==1)
-                out.println("Welcome "+sname);
+                response.sendRedirect("masterpage.html");
             else
                 response.sendRedirect("error.jsp");
         %>

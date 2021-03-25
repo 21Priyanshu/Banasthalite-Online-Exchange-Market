@@ -6,7 +6,7 @@
 
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="myprojectdb.DbConnection"%>
+<%@page import="myproject.DbConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,15 +16,17 @@
     </head>
     <body>
          <%
-            String u=request.getParameter("bname");
+            String u=request.getParameter("uid");
             String p=request.getParameter("password");
             DbConnection obj=new DbConnection();
-            PreparedStatement ps=obj.c.prepareStatement("select *from buyer where sname=? and "+"password=?");
+            PreparedStatement ps=obj.c.prepareStatement("select * from buyer where uid=? and "+"password=?");
             ps.setString(1, u);
             ps.setString(2, p);
             ResultSet rs=ps.executeQuery();
             if(rs.next())
+            {
                 out.println("Welcome "+u);
+            }
             else
                 response.sendRedirect("error.jsp");
         %>

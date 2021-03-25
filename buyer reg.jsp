@@ -3,7 +3,7 @@
     Created on : 9 Mar, 2021, 3:19:23 PM
     Author     : HP
 --%>
-<%@page import="myprojectdb.DbConnection"%>
+<%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -18,7 +18,7 @@
             String bname=request.getParameter("bname");
             String bvid=request.getParameter("uid");
             String p=request.getParameter("password");
-            String eid=request.getParameter("email");
+            String eid=request.getParameter("emailid");
             String course=request.getParameter("course");
             String b=request.getParameter("branch");
             int sem=Integer.parseInt(request.getParameter("sem"));
@@ -38,8 +38,10 @@
             ps.setInt(9, rno);
             ps.setString(10, cno);
             int i=ps.executeUpdate();
-            if(i==1)
-                out.println("Welcome "+bname);
+            if(i==1){
+                
+                response.sendRedirect("masterpage.html");
+            }
             else
                 response.sendRedirect("error.jsp");
         %>
