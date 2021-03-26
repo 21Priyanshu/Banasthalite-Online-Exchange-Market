@@ -39,7 +39,6 @@
             ps.setString(10, cno);
             int i=ps.executeUpdate();
             if(i==1){
-                
                 response.sendRedirect("masterpage.html");
             }
             else

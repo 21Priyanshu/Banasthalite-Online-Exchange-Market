@@ -26,6 +26,7 @@
             if(rs.next()){
                 out.println("Welcome "+rs.getString(1));
                 response.sendRedirect("Index.jsp");
+                session.setAttribute("userId", u);
             }
             else
                 response.sendRedirect("error.jsp");

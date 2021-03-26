@@ -40,38 +40,39 @@
                         <li>Logout</li>
                     </ul>
          </div>
-      
         <div class="display" >
-           
-               <%
-try{
-    {
-    Class.forName("org.apache.derby.jdbc.ClientDriver");
-    Connection conn=DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
-    Statement stmt1=conn.createStatement();
-    ResultSet rs=stmt1.executeQuery("select * from item1");
-    while(rs.next()){%>
-    <div class="container">
-        <div class="item"><%
-           out.print("<img src="+rs.getString(4)+" width='20%' height='300px' alt='Tulips'/>");
-           out.print("<p>"+rs.getString(2) +"<p>"); 
-           out.print("<p>"+rs.getString(6) +"</p>");
-           out.print("<p>"+rs.getString(5) +"</p>");
-           %>
-           <form action="delete">
-               <button name="delete" value="<%out.print(rs.getString(1));%>">
-                   Delete
-               </button>
-               
-           </form>
+            <%
+                   String u=session.getAttribute("userId").toString();
+                try{
+                    Class.forName("org.apache.derby.jdbc.ClientDriver");
+                    Connection conn=DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
+                    Statement stmt1=conn.createStatement();
+                    ResultSet rs=stmt1.executeQuery("select * from item1 where uid='"+u+"'");
+                    while(rs.next()){%>
+                        <div class="container">
+                        <div class="item">
+                            <div class="img">
+                            <%
+                           out.print("<img src="+rs.getString(4)+" width='100%' height='100%' alt='Tulips'/>");
+                           %>
+                            </div>
+                            <div>
+                            <%
+                           out.print("<p>"+rs.getString(2) +"<p>"); 
+                           out.print("<p>"+rs.getString(6) +"</p>");
+                           out.print("<p>"+rs.getString(5) +"</p>");
+                            %>
+                            </div>
+                    <form action="delete">
+                        <button name="delete" value="<%out.print(rs.getString(1));%>">
+                            Delete
+                        </button>
+                    </form>
+                    <%}%>
         </div>
-        <%
-            }
-            %>
             </div>
             <%
     }
-}
   catch(Exception ex){
           out.println(ex);
             }
