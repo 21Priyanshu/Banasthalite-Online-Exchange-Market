@@ -69,7 +69,7 @@ public class AddItem extends HttpServlet {
             if(i==1)
             {
                 System.out.println("Item added successfully");
-                 response.sendRedirect("/Banasthali/dummy.jsp");
+                 response.sendRedirect("/Banasthali/Index.jsp");
                 out.print("<h1>Item Added Successfully</h1>");
             }
             else

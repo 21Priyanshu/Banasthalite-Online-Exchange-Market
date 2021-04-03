@@ -50,7 +50,7 @@
                     Class.forName("org.apache.derby.jdbc.ClientDriver");
                     Connection conn=DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
                     Statement stmt1=conn.createStatement();
-                    ResultSet rs=stmt1.executeQuery("select * from item1");
+                    ResultSet rs=stmt1.executeQuery("select * from item1 where uid='"+u+"'");
                     while(rs.next()){%>
   <div class="col ">
     <div class="card h-100 mt-2">
