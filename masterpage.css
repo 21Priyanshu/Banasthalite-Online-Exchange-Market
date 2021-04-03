@@ -1,3 +1,7 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
 body
 {
 	/*background-image:linear-gradient(rgba(0,0,0,.5),rgba(0,0,0,.3)),url(images/background-1.jpg); */

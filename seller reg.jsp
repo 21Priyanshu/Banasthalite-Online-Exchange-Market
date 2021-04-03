@@ -1,8 +1,3 @@
-<%-- 
-    Document   : buyer reg
-    Created on : 9 Mar, 2021, 3:19:23 PM
-    Author     : HP
---%>
 <%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -21,9 +16,9 @@
             String eid=request.getParameter("emailid");
             String course=request.getParameter("course");
             String b=request.getParameter("branch");
-            String sem=request.getParameter("sem");
+            int sem=Integer.parseInt(request.getParameter("sem"));
             String hostel=request.getParameter("hostel");
-            String rno=request.getParameter("roomno");
+            int rno=Integer.parseInt(request.getParameter("roomno"));
             String cno=request.getParameter("contact");
             DbConnection obj=new DbConnection();
             PreparedStatement ps=obj.c.prepareStatement("insert into seller values(?,?,?,?,?,?,?,?,?,?)");
@@ -33,9 +28,9 @@
             ps.setString(4, eid);
             ps.setString(5, course);
             ps.setString(6, b);
-            ps.setString(7, sem);
+            ps.setInt(7, sem);
             ps.setString(8, hostel);
-            ps.setString(9, rno);
+            ps.setInt(9, rno);
             ps.setString(10, cno);
             int i=ps.executeUpdate();
             if(i==1)
