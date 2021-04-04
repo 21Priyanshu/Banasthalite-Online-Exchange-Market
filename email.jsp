@@ -63,7 +63,7 @@ final String messg = request.getParameter("mess");
 
 // Sender's email ID and password needs to be mentioned
 final String from = "priyanshusingh0872@gmail.com";
-final String pass = "Priyanshusingh2109@";
+final String pass = "";
 
 // Defining the gmail host
 String host = "smtp.gmail.com";
