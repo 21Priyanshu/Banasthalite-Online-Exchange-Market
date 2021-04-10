@@ -14,7 +14,7 @@
     </head>
     <body class="bg">
         <div class="navbar nav">
-            <div class="r-navlist nav">
+             <div class="r-navlist nav">
                 <div class="ham">
                     <div class="line"></div>
                     <div class="line"></div>
@@ -28,7 +28,7 @@
             <div class="dropdown nav">
                 <button >Login
                 </button>
-                <div class="dropdown-content">
+                <div class="dropdown-content dropdown-menu-right">
                   <a href="#">Buyer</a>
                 </div>
               </div>
@@ -59,8 +59,9 @@
        %>
         <div class="card-body">
         <h5 class="card-title"><% out.print(rs.getString(2)); %></h5>
+        <h6 class="card-text">&#8377 <%out.print(rs.getString(6));%></h6>
         <p class="card-text"><%out.print(rs.getString(5));%></p> </div>
-        <form action="delete">
+        <form action="delete" class="card-text">
                         <button name="delete" value="<%out.print(rs.getString(1));%>">
                             Delete
                         </button>
