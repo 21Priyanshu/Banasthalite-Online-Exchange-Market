@@ -7,7 +7,7 @@
         <link href="css/AddItem.css" rel="stylesheet">
     </head>
     <body>
-        <form action="AddItem" method="post" enctype="multipart/form-data" class="form">
+        <form action="AddItem21" method="post" enctype="multipart/form-data" class="form">
             <table class="table">
                 <caption>Add Item</caption>
                 <tr>
