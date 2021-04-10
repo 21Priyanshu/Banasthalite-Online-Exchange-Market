@@ -8,3 +8,53 @@ price integer not null,
 category varchar(10) not null,
 item_available boolean not null
 );
+
+
+
+
+
+
+
+
+
+
+
+
+
+create table buyer(
+bname varchar(30) not null,
+uid varchar(30) primary key,
+password varchar(40) unique,
+email varchar(30) unique,
+course varchar(10) not null,
+branch char(5) not null,
+sem integer not null,
+hostel varchar(30) not null,
+roomno integer not null,
+contact varchar(15) not null
+);
+
+
+
+
+
+
+
+
+create table seller(
+sname varchar(30) not null,
+uid varchar(30) primary key,
+password varchar(40) unique,
+email varchar(30) unique,
+course varchar(10) not null,
+branch char(5) not null,
+sem integer not null,
+hostel varchar(30) not null,
+roomno integer not null,
+contact varchar(15) not null
+);
+
+
+
+delete query:
+DELETE FROM item;

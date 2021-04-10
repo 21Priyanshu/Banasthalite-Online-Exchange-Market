@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <title>Timer</title>
+    </head>
+    <body>
+        <div id="timer">0</div>
+    </body>
+    <script>
+        var d1=document.getElementById('timer')
+        i=1;
+        function timer(){
+            d1.innerHTML=i;
+            i++;
+        }
+        setInterval(timer,2000);
+    </script>
+</html>
