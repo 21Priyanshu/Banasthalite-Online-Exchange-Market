@@ -33,8 +33,38 @@
             <div class="dropdown nav">
                 <button >Login</button>
                 <div class="dropdown-content dropdown-menu-right">
-                  <a href="B_login.html">Buyer</a>
+                  <a href="#mymodal2" data-toggle="modal">Buyer</a>
                 </div>
+                <div class="modal" id="mymodal2">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
+                                    <h3 class="text-center">Buyer Login</h3>
+                                    <button type="button" class="close" data-dismiss="modal"> &times;</button> 
+                                </div>
+                                <div class="modal-body">
+                                    <form action="b login.jsp" method="post">
+                                        <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="uid" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-2 col-form-label"><h6>Password </h6></label>
+                                            <div class="col-sm-10">
+                                                <input type="password" name="password" class="form-control" size=40 required/>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer justify-content-center">
+                                            <button type="submit" class="btn btn-primary" > Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
         <div class="bg_container">
