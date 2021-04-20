@@ -4,8 +4,7 @@
     Author     : HP
 --%>
 
-<%@page import="java.sql.ResultSet"%>
-<%@page import="java.sql.PreparedStatement"%>
+<%@page import="java.sql.*"%>
 <%@page import="myproject.DbConnection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -16,6 +15,7 @@
     </head>
     <body>
          <%
+            
             String u=request.getParameter("uid");
             String p=request.getParameter("password");
             DbConnection obj=new DbConnection();
@@ -25,12 +25,16 @@
             ResultSet rs=ps.executeQuery();
             if(rs.next())
             {
-                out.println("Welcome "+rs.getString(1));
-                response.sendRedirect("b_index.jsp");
+                
                 session.setAttribute("userId", u);
+                String loginmessage = "Removed from your wishlist!";
+                session.setAttribute("message", loginmessage);
+                response.sendRedirect("b_index.jsp");
+                
             }
             else
                 response.sendRedirect("error.jsp");
+            
         %>
     </body>
 </html>

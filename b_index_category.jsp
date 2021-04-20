@@ -16,6 +16,7 @@
 <%@page import="java.sql.Connection"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -33,6 +34,12 @@
 
                 left:45%;
             }
+            .searchcat{
+                margin-left:35%;
+            }
+            .indexbutton{
+                margin:15px;
+            }
         </style>
     </head>
 
@@ -49,6 +56,10 @@
                     <li>Banasthalite Online Exchange Market</li>
                 </ul>
             </div>
+            <form class="form-inline searchcat" action="b_index_category.jsp">
+            <input class="form-control mr-sm-2" name="category" type="search" placeholder="Enter a category" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
             <div class="dropdown nav">
                 <button >Login
                 </button>
@@ -69,27 +80,31 @@
             <div class="display" >
                 <div class="row row-cols-2 row-cols-xl-4 g-4" >
                     <%
-                        String u=session.getAttribute("userId").toString();
                         try {
+                            String c=request.getParameter("category");
                             DbConnection obj=new DbConnection();
-                            Statement stmt1 = obj.c.createStatement();
-                           ResultSet rs=stmt1.executeQuery("select * from item where itemid in(select itemid from wishlist where uid='"+u+"')");
-                     while (rs.next()) {%>
+                            PreparedStatement ps=obj.c.prepareStatement("select * from item where item_available=? and "+"category=?");
+                            ps.setString(1,"True");
+                            ps.setString(2, c);
+                            ResultSet rs = ps.executeQuery();
+                            while (rs.next()) {%>
                     <div class="col ">
-                        <div class="card h-75 mt-2">
+                        <div class="card h-100 mt-2">
                             <%
-                                out.print("<img src=" + rs.getString(4) + " width='' height='50%' alt='Tulips'/>");
+                                out.print("<img src=" + rs.getString(4) + " width='100%' height='50%' alt='Tulips'/>");
                             %>
                             <div class="card-body">
                                 <h5 class="card-title"><% out.print(rs.getString(2)); %></h5>
                                 <h6 class="card-text">&#8377 <%out.print(rs.getString(6));%></h6>
                                 <p class="card-text"><%out.print(rs.getString(5));%></p> </div>
-                                <form>
-                                <button class="btn btn-primary card-text"  name="btn_remove" value="<%out.print(rs.getString(1));%>">
-                                remove
+                            <form>
+                            <button class="btn btn-primary card-text indexbutton"  name="btn_wish" value="<%out.print(rs.getString(1));%>">
+                                add to wishlist
                             </button>
-                                </form>
-                            
+                            <button class="btn btn-primary card-text"  name="btn_buy" value="<%out.print(rs.getString(1));%>">
+                                buy
+                            </button>
+                            </form>
                         </div>
                     </div>
                     <%}%>
@@ -105,29 +120,31 @@
 
     </body>
 </html>
-
 <%
-      
-    if (request.getParameter("btn_remove") != null) {
-       
-        String primessage;
-        int id = Integer.parseInt(request.getParameter("btn_remove"));
-        System.out.print(id);
+    
+    if (request.getParameter("btn_wish") != null) {
+        String u = session.getAttribute("userId").toString();
+        String primessage = "null";
+        int id = Integer.parseInt(request.getParameter("btn_wish"));
         DbConnection obj = new DbConnection();
         try {
-            
-            PreparedStatement ps = obj.c.prepareStatement("delete from wishlist where itemid=?");
-           
-            ps.setInt(1,id);
+            PreparedStatement ps = obj.c.prepareStatement("insert into wishlist values (?,?)");
+            ps.setString(1, u);
+            ps.setInt(2, id);
             ps.executeUpdate();
-            primessage = "Removed from your wishlist!";
-            session.setAttribute("message", primessage);
-            response.sendRedirect("wishlist_update.jsp");
-            
-            
-            } catch (SQLException ex) {
+            primessage = "Added Succesfully";
+
+            if (primessage != null) {
+%>
+<div class="popup alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Added Successfully!</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<% }
+        } catch (SQLException ex) {
             ex.printStackTrace();
         }
     }
-   
 %>

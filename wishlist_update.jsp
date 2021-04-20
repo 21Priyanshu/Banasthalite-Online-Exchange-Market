@@ -105,7 +105,6 @@
 
     </body>
 </html>
-
 <%
       
     if (request.getParameter("btn_remove") != null) {
@@ -129,5 +128,20 @@
             ex.printStackTrace();
         }
     }
-   
+    String postmessage = session.getAttribute("message").toString();    
+    out.println(postmessage);
+    if (postmessage != null) {
+
 %>
+<div class="popup alert alert-success alert-dismissible fade show" role="alert">
+    <strong>Removed from your wishlist!</strong> 
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<%
+      }
+      postmessage="null";
+    session.setAttribute("message", postmessage);
+%>
+
