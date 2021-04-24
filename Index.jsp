@@ -141,6 +141,7 @@
                  <div class="col ">
                      <div class="card h-100 cardh " >
                         <% 
+                            int item_id=Integer.parseInt(rs.getString(1));
                                            out.print("<img src="+rs.getString(4)+" width='100%' height='300px' alt='Tulips'/>");
                        %>
                         <div class="card-body">
@@ -152,24 +153,81 @@
                                     Delete
                                 </button>
                             </form>
-                                    <br>
-                            <form action="" class="card-text d-inline-flex">
-                                <button name="delete" value="<%out.print(rs.getString(1));%>" class="btn btn-light d-inline-flex">
+                            <br>
+                            <form >
+                                <button data-target="#modify_modal" data-toggle="modal" type="submit" name="modify" value="<%out.print(rs.getString(1));%>" >
                                     Modify
                                 </button>
                             </form>
-                            
+                                     </div>
+                                    </div>
+                                    </div>  
+                <%         
+//                    if (request.getParameter("modify")!= null){
+                %>
+                     <div class="modal" id="modify_modal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
+                                    <h3 class="text-center">Modify Item</h3>
+                                    <button type="button" class="close" data-dismiss="modal"> &times;</button> 
+                                </div>
+                                <div class="modal-body">
+                                    <form action="modify" method="post" enctype="multipart/form-data" >
+                                       <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
+                                            <div class="col-sm-7">
+                                                <!--<input type="hidden" id="itemid" name="itemid" value="">-->
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Add Photo </h6></label>
+                                            <div class="col-sm-7">
+                                                <input type="file" class="form-control form-control-sm form-control-file" name="itemphotos" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Description </h6></label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control form-control-sm" name="idescription" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Price </h6></label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control form-control-sm" name="price" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
+                                            <div class="col-sm-7">
+                                                <input type="text" class="form-control form-control-sm" name="category" required>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer justify-content-center">
+                                            <button type="submit" class="btn btn-primary" >Modify</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
+                        </div>
+            
                 <%
-                           }
+//                        }
+                    }
                               }
                     catch(Exception ex){
                         out.println(ex);
-                          }
-                %>
-            </div>    
+                          }%>
+                 </div>    
         </div>
         </div>  
             <!-- jQuery library -->
