@@ -56,5 +56,13 @@ contact varchar(15) not null
 
 
 
+create table whishlist(
+uid varchar(30) not null,
+itemid integer not null
+);
+
+
+
+
 delete query:
 DELETE FROM item;
