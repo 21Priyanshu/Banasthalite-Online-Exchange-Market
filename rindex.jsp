@@ -1,3 +1,8 @@
+<%-- 
+    Document   : rindex
+    Created on : Apr 26, 2021, 10:06:18 AM
+    Author     : vidya raj
+--%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -33,9 +38,6 @@
             
             
             <div class="dropdown nav">
-                <form action="rindex.jsp">
-                 <button name="btn">Rent</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </form>
                 <button >Login</button>
                 <div class="dropdown-content dropdown-menu-right">
                   <a class="dropdown-item" href="#mymodal2" data-toggle="modal">Buyer</a>
@@ -92,35 +94,36 @@
                                     <button type="button" class="close" data-dismiss="modal"> &times;</button> 
                                 </div>
                                 <div class="modal-body">
-                                    <form action="AddItem" method="post" enctype="multipart/form-data" >
+                                    <form action="RntAddItem" method="post" enctype="multipart/form-data" >
                                         <div class="form-group row">
                                             <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle" required>
+                                                <input type="text" class="form-control form-control-sm"  name="ritemname" placeholder="e.g.Cycle" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Add Photo </h6></label>
                                             <div class="col-sm-7">
-                                                <input type="file" class="form-control form-control-sm form-control-file" name="itemphotos" required>
+                                                <input type="file" class="form-control form-control-sm form-control-file" name="ritemphotos" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Description </h6></label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control form-control-sm" name="idescription" required>
+                                                <input type="text" class="form-control form-control-sm" name="rdescription" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Price </h6></label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control form-control-sm" name="price" required>
+                                                <input type="number" class="form-control form-control-sm" name="rprice" required>
                                             </div>
                                         </div>
+                                        
                                         <div class="form-group row">
                                             <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
                                             <div class="col-sm-7">
-                                                <input type="text" class="form-control form-control-sm" name="category" required>
+                                                <input type="text" class="form-control form-control-sm" name="rcategory" required>
                                             </div>
                                         </div>
                                         <div class="modal-footer justify-content-center">
@@ -141,7 +144,7 @@
                     Class.forName("org.apache.derby.jdbc.ClientDriver");
                     Connection conn=DriverManager.getConnection("jdbc:derby://localhost:1527/Bolx");
                     Statement stmt1=conn.createStatement();
-                    ResultSet rs=stmt1.executeQuery("select * from item where uid='"+u+"'");
+                    ResultSet rs=stmt1.executeQuery("select * from rent where uid='"+u+"'");
                     while(rs.next()){
              %>
                  <div class="col ">
@@ -186,3 +189,4 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     </body>
 </html>
+
