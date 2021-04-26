@@ -58,38 +58,8 @@
                 <button >Login
                 </button>
                 <div class="dropdown-content">
-                    <a href="#mymodal" data-toggle="modal">Seller</a>
+                    <a href="S_login.html">Seller</a>
                 </div>
-                 <div class="modal" id="mymodal">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
-                                    <h3 class="text-center">Seller Login</h3>
-                                    <button type="button" class="close" data-dismiss="modal"> &times;</button> 
-                                </div>
-                                <div class="modal-body">
-                                    <form action="s login.jsp" >
-                                        <div class="form-group row">
-                                            <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="uid" class="form-control" required>
-                                            </div>
-                                        </div>
-                                        <div class="form-group row">
-                                            <label for="inputPassword" class="col-sm-2 col-form-label"><h6>Password </h6></label>
-                                            <div class="col-sm-10">
-                                                <input type="password" name="password" class="form-control" size=40 required/>
-                                            </div>
-                                        </div>
-                                        <div class="modal-footer justify-content-center">
-                                            <button type="submit" class="btn btn-primary" > Login</button>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
             </div>
         </div>
         <div class="bg_container">
@@ -106,7 +76,7 @@
                     <%
                         try {
                             Class.forName("org.apache.derby.jdbc.ClientDriver");
-                            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
+                            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/project");
                             Statement stmt1 = conn.createStatement();
                             ResultSet rs = stmt1.executeQuery("select * from item where item_available='True" + "'");
                             while (rs.next()) {%>
@@ -123,10 +93,13 @@
                             <button class="btn btn-primary card-text indexbutton"  name="btn_wish" value="<%out.print(rs.getString(1));%>">
                                 add to wishlist
                             </button>
-                            
-                            <button class="btn btn-primary card-text" name="btn_buy" value="<%out.print(rs.getString(1));%>">
+                            </form>
+                                <form data-toggle="modal" data-target="#buymodal">
+<!--                                <form action="buy.jsp">-->
+                            <button type="submit" class="btn btn-primary card-text" name="btn_buy" value="<% out.print(rs.getString(1)); %>">
                                 buy
                             </button>
+                           
                            </form>
                         </div>
                     </div>
@@ -158,7 +131,7 @@
             ps.setInt(2, id);
             ps.executeUpdate();
             primessage = "Added Succesfully";
-
+ //           request.setAttribute("btn_wish",null);
             if (primessage != null) {
 %>
 <div class="popup alert alert-success alert-dismissible fade show" role="alert">
@@ -173,3 +146,51 @@
         }
     }
 %>
+
+
+<!--Buy button coding-->
+<%
+
+    if (request.getParameter("btn_buy") != null) {
+        %>
+<div class="modal" id="buymodal">
+    <%
+                int id = Integer.parseInt(request.getParameter("data-id"));
+                try {
+                    DbConnection obj = new DbConnection();
+                    PreparedStatement ps=obj.c.prepareStatement("select * from seller where uid in(select uid from item where itemid=?)");
+            ps.setInt(1,id);
+            ResultSet rs=ps.executeQuery();
+            if (rs.next()) {      %>  
+            <div class="form-group">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
+                                    <h3 class="text-center">Buyer Login</h3>
+                                    <button type="button" class="close" data-dismiss="modal"> &times;</button> 
+                                </div>
+                                <div class="modal-body">
+                                    <div class="form-group">
+                <label for="name">  Name </label>
+                <% out.print(rs.getString(1)); %>
+            </div>
+            <div class="form-group">
+                <label for="user_id">  User Id</label>
+                <% out.print(rs.getString(2)); %>
+            </div>
+                                        <div class="modal-footer justify-content-center">
+                                          
+                                        </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+              <%
+                    }
+                } catch (Exception ex) {
+                    out.println(ex);
+                                   }
+}
+              %>	
