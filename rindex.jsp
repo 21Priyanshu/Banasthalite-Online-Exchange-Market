@@ -156,15 +156,15 @@
                             <h5 class="card-title"><% out.print(rs.getString(2)); %></h5>
                             <h6 class="card-text">&#8377 <%out.print(rs.getString(6));%></h6>
                             <p class="card-text"><%out.print(rs.getString(5));%></p> 
-                            <form action="delete" class="card-link">
+                            <form action="rdelete" class="card-link">
                                 <button name="delete" value="<%out.print(rs.getString(1));%>" class="btn btn-primary d-inline-flex">
                                     Delete
                                 </button>
                             </form>
                                     <br>
                             <form action="" class="card-link">
-                                <button name="delete" value="<%out.print(rs.getString(1));%>" class="btn btn-light d-inline-flex">
-                                    Modify
+                                <button name="rent" value="<%out.print(rs.getString(1));%>" class="btn btn-primary d-inline-flex">
+                                    Rent
                                 </button>
                             </form>
                             
