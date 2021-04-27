@@ -81,11 +81,11 @@
                 /*padding-top: 10px;*/
                 right: 50px;
             }
-            .dropdown button{
+/*            .dropdown button{
                 border: 1px solid black;
                 border-radius: 5px;
                 background-color: transparent
-            }
+            }*/
             .dropdown-menu-right {
                 /* right: 0; */
                 left: 47%;

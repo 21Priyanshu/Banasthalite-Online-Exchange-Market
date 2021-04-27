@@ -85,11 +85,11 @@
                 /*padding-top: 10px;*/
                 right: 50px;
             }
-            .dropdown button{
+/*            .dropdown button{
                 border: 1px solid black;
                 border-radius: 5px;
                 background-color: transparent
-            }
+            }*/
             .dropdown-menu-right {
                 /* right: 0; */
                 left: 47%;
@@ -144,8 +144,38 @@
                 <button >Login
                 </button>
                 <div class="dropdown-content">
-                    <a href="S_login.html">Seller</a>
+                    <a href="#mymodal" data-toggle="modal">Seller</a>
                 </div>
+                 <div class="modal" id="mymodal">
+                        <div class="modal-dialog modal-dialog-centered">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
+                                    <h3 class="text-center">Seller Login</h3>
+                                    <button type="button" class="close" data-dismiss="modal"> &times;</button> 
+                                </div>
+                                <div class="modal-body">
+                                    <form action="s login.jsp" >
+                                        <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
+                                            <div class="col-sm-10">
+                                                <input type="text" name="uid" class="form-control" required>
+                                            </div>
+                                        </div>
+                                        <div class="form-group row">
+                                            <label for="inputPassword" class="col-sm-2 col-form-label"><h6>Password </h6></label>
+                                            <div class="col-sm-10">
+                                                <input type="password" name="password" class="form-control" size=40 required/>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer justify-content-center">
+                                            <button type="submit" class="btn btn-primary" > Login</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
             </div>
         </div>
         <div class="bg_container">
