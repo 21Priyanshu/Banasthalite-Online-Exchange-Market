@@ -58,6 +58,55 @@
                 font-size: 30px;
                 cursor: pointer;
             }
+            .dropdown{
+
+                /*display: block;*/
+                /*background-color: blue;*/
+                /*position: absolute;*/
+                /*padding-top: 10px;*/
+                right: 50px;
+            }
+/*            .dropdown button{
+                border: 1px solid black;
+                border-radius: 5px;
+                background-color: transparent
+            }*/
+            .dropdown-menu-right {
+                /* right: 0; */
+                left: 47%;
+                top: 103%;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                /*background-color: black;*/
+                background-color: #f1f1f1;
+                min-width: 102px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                top: 103%;
+                /*z-index: 1;*/
+            }
+/*            .dropdown>button:hover{
+                background-color: #4CAF50;
+                color: white;
+            }*/
+            .dropdown:hover .dropdown-content {
+                display: block;
+                
+                background-color: #ddd;
+          }
+            
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                float: none;
+                /*color: black;*/
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
         </style>
 </head>
 <body class="bg">
@@ -70,9 +119,7 @@
                 <li>Banasthalite Online Exchange Market</li>
             </ul>
         </div>
-            
-            
-            <div class="dropdown nav">
+        <div class="dropdown nav">
                 <button >Login</button>
                 <div class="dropdown-content dropdown-menu-right">
                   <a class="dropdown-item" href="#mymodal2" data-toggle="modal">Buyer</a>
@@ -111,63 +158,63 @@
             </div>
         </div>
         <div class="bg_container">
-        <div class="vertical" id="vertical">
-            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-            <a href=#mymodal data-toggle="modal">Add Item</a>
-            <a href="#modify_modal" data-toggle="modal">Display Item</a>
-            <a>Profile</a>
-            <a href="Logout.jsp">Logout</a>
-        </div>  
+            <div class="vertical" id="vertical">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href=#mymodal data-toggle="modal">Add Item</a>
+                <a href="#modify_modal" data-toggle="modal">Display Item</a>
+                <a>Profile</a>
+                <a href="Logout.jsp">Logout</a>
+            </div>  
               <div class="modal" id="mymodal">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
-                                    <h3 class="text-center">Add Item</h3>
-                                    <button type="button" class="close" data-dismiss="modal"> &times;</button> 
-                                </div>
-                                <div class="modal-body">
-                                    <form action="RntAddItem" method="post" enctype="multipart/form-data" >
-                                        <div class="form-group row">
-                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control form-control-sm"  name="ritemname" placeholder="e.g.Cycle" required>
-                                            </div>
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
+                                <h3 class="text-center">Add Item</h3>
+                                <button type="button" class="close" data-dismiss="modal"> &times;</button> 
+                            </div>
+                            <div class="modal-body">
+                                <form action="RntAddItem" method="post" enctype="multipart/form-data" >
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm"  name="ritemname" placeholder="e.g.Cycle" required>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Add Photo </h6></label>
-                                            <div class="col-sm-7">
-                                                <input type="file" class="form-control form-control-sm form-control-file" name="ritemphotos" required>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Add Photo </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="file" class="form-control form-control-sm form-control-file" name="ritemphotos" required>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Description </h6></label>
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control form-control-sm" name="rdescription" required>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Description </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="rdescription" required>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Price </h6></label>
-                                            <div class="col-sm-7">
-                                                <input type="number" class="form-control form-control-sm" name="rprice" required>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Price </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="number" class="form-control form-control-sm" name="rprice" required>
                                         </div>
-                                        
-                                        <div class="form-group row">
-                                            <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
-                                            <div class="col-sm-7">
-                                                <input type="text" class="form-control form-control-sm" name="rcategory" required>
-                                            </div>
+                                    </div>
+
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" class="form-control form-control-sm" name="rcategory" required>
                                         </div>
-                                        <div class="modal-footer justify-content-center">
-                                            <button type="submit" class="btn btn-primary" >Add</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="submit" class="btn btn-primary" >Add</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
-        </div>
+              </div>
+    
           
         <div class="display" >
             <div class="row  row-cols-4 g-4 mt-0 mx-1" >
@@ -175,7 +222,7 @@
                    String u=session.getAttribute("userId").toString();
                 try{
                     Class.forName("org.apache.derby.jdbc.ClientDriver");
-                    Connection conn=DriverManager.getConnection("jdbc:derby://localhost:1527/Bolx");
+                    Connection conn=DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
                     Statement stmt1=conn.createStatement();
                     ResultSet rs=stmt1.executeQuery("select * from rent where uid='"+u+"'");
                     while(rs.next()){
@@ -213,7 +260,7 @@
                 %>
             </div>    
         </div>
-        
+            </div>
             <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Popper JS -->

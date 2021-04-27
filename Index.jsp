@@ -225,7 +225,7 @@
             <a href="Logout.jsp">Logout</a>
         </div>     
       
-<!--        <div class="modal" id="mymodal">
+        <div class="modal" id="mymodal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -272,7 +272,7 @@
                     </div>
                 </div>
             </div>
-        </div>-->
+        </div>
         <div class="display" >
             <div class="row  row-cols-4 g-4 mt-0 mx-1" >
                 <%
