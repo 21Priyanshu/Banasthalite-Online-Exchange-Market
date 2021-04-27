@@ -108,6 +108,7 @@
             }*/
             .dropdown:hover .dropdown-content {
                 display: block;
+                
                 background-color: #ddd;
           }
             

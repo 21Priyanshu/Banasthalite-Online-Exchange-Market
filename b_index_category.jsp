@@ -1,8 +1,3 @@
-<%-- 
-    Document   : b_index
-    Created on : 1 Apr, 2021, 3:54:05 PM
-    Author     : HP
---%>
 <%@page import="javax.mail.MessagingException"%>
 <%@page import="java.util.logging.Logger"%>
 <%@page import="java.sql.SQLException"%>
@@ -21,8 +16,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Buyer Home Page</title>
-        <link href="css/sample.css" rel="stylesheet">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+         <link href="css/sample.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+        
+        <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-growl/1.0.0/jquery.bootstrap-growl.min.js" integrity="sha512-pBoUgBw+mK85IYWlMTSeBQ0Djx3u23anXFNQfBiIm2D8MbVT9lr+IxUccP8AMMQ6LCvgnlhUCK3ZCThaBCr8Ng==" crossorigin="anonymous"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -40,6 +38,97 @@
             .indexbutton{
                 margin:15px;
             }
+            .cardh{
+                height: auto;
+                /*background-color: red;*/
+            }
+            .vertical{
+                display: none;
+                width: 15%;
+                height: 100%;
+                position: relative;
+                padding-top: 0px;
+                background-color: #f1f1f1;
+                overflow-x: hidden;
+                transition: 0.5s;
+             }
+            .vertical a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #000;
+                display: block;
+                transition: 0.3s;
+                /**/
+
+            }
+            .closebtn {
+                margin-left: 60%;
+                font-size: 30px;
+                /*margin-right: 10px;*/
+            }
+            .vertical  a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+            .vertical a:hover{
+                background-color: #555;
+                color: whitesmoke;
+            }
+            .ham{
+                font-size: 30px;
+                cursor: pointer;
+            }
+            .dropdown{
+
+                /*display: block;*/
+                /*background-color: blue;*/
+                /*position: absolute;*/
+                /*padding-top: 10px;*/
+                right: 50px;
+            }
+            .dropdown button{
+                border: 1px solid black;
+                border-radius: 5px;
+                background-color: transparent
+            }
+            .dropdown-menu-right {
+                /* right: 0; */
+                left: 47%;
+                top: 103%;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                /*background-color: black;*/
+                background-color: #f1f1f1;
+                min-width: 102px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                top: 103%;
+                /*z-index: 1;*/
+            }
+/*            .dropdown>button:hover{
+                background-color: #4CAF50;
+                color: white;
+            }*/
+            .dropdown:hover .dropdown-content {
+                display: block;
+                
+                background-color: #ddd;
+          }
+            
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                float: none;
+                /*color: black;*/
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+            
         </style>
     </head>
 
@@ -47,9 +136,7 @@
         <div class="navbar nav">
             <div class="r-navlist nav">
                 <div class="ham">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
+                    <p onclick="openNav()">&#9776;</p>
                 </div>
 
                 <ul>
@@ -69,13 +156,12 @@
             </div>
         </div>
         <div class="bg_container">
-            <div class="vertical">
-                <ul>
-                    <li><a href="b_index.jsp">Display Item</a></li>
-                    <li><a href="wishlist.jsp">Wishlist</a></li>
-                    <li>Profile</li>
-                    <li><a href="Logout.jsp">Logout</a></li>
-                </ul>
+            <div id="vertical" class="vertical">
+               <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="b_index.jsp">Display Item</a>
+                <a href="wishlist.jsp">Wishlist</a>
+                <a>Profile</a>
+                <a href="Logout.jsp">Logout</a>
             </div>
             <div class="display" >
                 <div class="row row-cols-2 row-cols-xl-4 g-4" >
@@ -117,7 +203,17 @@
                 </div>
             </div> 
 
+                      <script>
+        
+        function openNav() {
+//      document.getElementById("vertical").style.width = "250px";
+  document.getElementById("vertical").style.display = "block";
+}
 
+function closeNav() {
+  document.getElementById("vertical").style.display = "none";
+}
+    </script>
     </body>
 </html>
 <%
