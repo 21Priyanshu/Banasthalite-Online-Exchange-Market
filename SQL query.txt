@@ -12,6 +12,22 @@ item_available boolean not null
 
 
 
+create table rent(
+ritemid int primary key generated always as identity,
+ritemname varchar(30) not null,
+uid varchar(30) not null,
+ritemphotos varchar(200) not null,
+rdescription varchar(100) not null,
+rprice integer not null,
+rcategory varchar(10) not null,
+rissuedate date,
+rduedate date,
+ritem_available boolean not null
+);
+
+
+
+
 
 
 
