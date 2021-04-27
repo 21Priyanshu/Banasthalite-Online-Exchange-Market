@@ -83,15 +83,6 @@
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 /*z-index: 1;*/
             }
-/*            .dropdown:hover {
-  background-color: #ddd;
-}*/
-
-/* Show the dropdown menu on hover */
-.dropdown:hover .dropdown-content {
-    background-color: #ddd;
-  display: block;
-}
 
             /* Links inside the dropdown */
             .dropdown-content a {
@@ -104,7 +95,7 @@
             }
             .modal1 {
                 margin: auto;
-                /*display: none;  Hidden by default */
+                /*display: none;*/  
                 position: fixed; /* Stay in place */
                 z-index: 1; /* Sit on top */
                 /*padding-top: 100px;  Location of the box */
@@ -143,11 +134,14 @@
                 border-top-left-radius: calc(.3rem - 1px);
                 border-top-right-radius: calc(.3rem - 1px);
             }
+            .mod{
+                min-width: 35%;
+            }
 
             /* The Close Button */
             .close {
                 margin-top: 1%;
-                margin-left: 55%;
+                margin-left: 50%;
                 /* background-color: red; */
                 float: right;
                 font-size: 1.5rem;
@@ -287,7 +281,7 @@
                 <div class="col ">
                     <div class="card h-100 cardh " >
                         <%
-                            int item_id = Integer.parseInt(rs.getString(1));
+                            
                             out.print("<img src=" + rs.getString(4) + " width='100%' height='300px' alt='Tulips'/>");
                         %>
                         <div class="card-body">
@@ -300,17 +294,71 @@
                                 </button>
                             </form>
                             <br>
-                            <form id='modify_form' action="Index_try.jsp">
+                            <form id='modify_form'>
 <!--                                <button data-target="#modify_modal" data-toggle="modal" type='button' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
                                     Modify
                                 </button>-->
-                                <button   type='submit' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
+                                <button   onclick="openModal()" id="modify_btn" type='button' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
                                     Modify
                                 </button>
                                 
                             </form>
+                                    <div id="myModal" class="modal1">
+                                        <% // int id= Integer.parseInt(request.getParameter("modify")); %>
+                                        <!-- Modal content -->
+                                        <div class="modal_content">
+                                            <div class="modal_header">
+                                                <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
+                                                <h3 class="text-center mod">Modify Item</h3>                                    
+                                                <span class="close" onclick="closeModal()">&times;</span>
 
+                                            </div>
+                                            <div class="modal_body">
+                                                <form action="modify" method="post" enctype="multipart/form-data" >
+                                                    <div class="form-group row">
+                                                        <!--<label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>-->
+                                                        <div class="col-sm-7">
+                                                            <input type="hidden" id="itemid" name="itemid" value="<%out.print(request.getParameter("modify"));%>">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Add Photo </h6></label>
+                                                        <div class="col-sm-7">
+                                                            <input type="file" class="form-control form-control-sm form-control-file" name="itemphotos" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Description </h6></label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control form-control-sm" name="idescription" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Price </h6></label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control form-control-sm" name="price" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group row">
+                                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
+                                                        <div class="col-sm-7">
+                                                            <input type="text" class="form-control form-control-sm" name="category" required>
+                                                        </div>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center">
+                                                        <button type="submit" class="btn btn-primary" >Modify</button>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                        </div>
 
+                                    </div>
                         </div>
                     </div>
                 </div>  
@@ -344,32 +392,16 @@
 function closeNav() {
   document.getElementById("vertical").style.display = "none";
 }
-var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("modify_btn");
-
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
 function openModal(){
-    modal.style.display="block";
+    document.getElementById("myModal").style.display="block";
+//    modal.style.display="block";
 }
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
-
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
+function closeModal(){
+    document.getElementById("myModal").style.display="none";
+//    modal.style.display="none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
     </script>
 </body>
 </html>

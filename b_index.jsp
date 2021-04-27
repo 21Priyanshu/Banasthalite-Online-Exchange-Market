@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Buyer Home Page</title>
         <link href="css/sample.css" rel="stylesheet">
-        <!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">-->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         
         <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
@@ -27,7 +27,7 @@
                 left:45%;
             }
             .searchcat{
-                margin-left:35%;
+                margin-left:30%;
             }
             .indexbutton{
                 margin:15px;
@@ -56,7 +56,6 @@
                 /**/
 
             }
-
             .closebtn {
                 margin-left: 60%;
                 font-size: 30px;
@@ -74,6 +73,55 @@
                 font-size: 30px;
                 cursor: pointer;
             }
+            .dropdown{
+
+                /*display: block;*/
+                /*background-color: blue;*/
+                /*position: absolute;*/
+                /*padding-top: 10px;*/
+                right: 50px;
+            }
+            .dropdown button{
+                border: 1px solid black;
+                border-radius: 5px;
+                background-color: transparent
+            }
+            .dropdown-menu-right {
+                /* right: 0; */
+                left: 47%;
+                top: 103%;
+            }
+
+            .dropdown-content {
+                display: none;
+                position: absolute;
+                /*background-color: black;*/
+                background-color: #f1f1f1;
+                min-width: 102px;
+                box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+                top: 103%;
+                /*z-index: 1;*/
+            }
+/*            .dropdown>button:hover{
+                background-color: #4CAF50;
+                color: white;
+            }*/
+            .dropdown:hover .dropdown-content {
+                display: block;
+                background-color: #ddd;
+          }
+            
+
+            /* Links inside the dropdown */
+            .dropdown-content a {
+                float: none;
+                /*color: black;*/
+                padding: 12px 16px;
+                text-decoration: none;
+                display: block;
+                text-align: left;
+            }
+            
         </style>
     </head>
 
