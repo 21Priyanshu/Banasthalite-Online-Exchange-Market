@@ -70,7 +70,7 @@
                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </form>
             <button >Login</button>
             <div class="dropdown-content dropdown-menu-right">
-                <a href="#mymodal2" data-toggle="modal">Buyer</a>
+                <a class="dropdown-item" href="#mymodal2" data-toggle="modal">Buyer</a>
             </div>
             <div class="modal" id="mymodal2">
                 <div class="modal-dialog modal-dialog-centered">
@@ -108,7 +108,7 @@
         <div class="vertical" id="vertical">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href=#mymodal data-toggle="modal">Add Item</a>
-            <a href="#modify_modal" data-toggle="modal">Display Item</a>
+            <a href="index.jsp" data-toggle="modal">Display Item</a>
             <a>Profile</a>
             <a href="Logout.jsp">Logout</a>
         </div>        
@@ -174,15 +174,15 @@
                 <div class="col ">
                     <div class="card h-100 cardh " >
                         <%
-                            int item_id = Integer.parseInt(rs.getString(1));
-                            out.print("<img src=" + rs.getString(4) + " width='100%' height='300px' alt='Tulips'/>");
+                           // int item_id = Integer.parseInt(rs.getString(1));
+                            out.print("<img src=" + rs.getString(4) +" width='100%' height='300px' alt='Tulips'/>");
                         %>
                         <div class="card-body">
                             <h5 class="card-title"><% out.print(rs.getString(2)); %></h5>
                             <h6 class="card-text">&#8377 <%out.print(rs.getString(6));%></h6>
                             <p class="card-text"><%out.print(rs.getString(5));%></p> 
-                           <form action="delete" >
-                                <button name="delete" value="<%out.print(rs.getString(1));%>" class="btn btn-primary indexbutton">
+                           <form action="delete" class="card-link">
+                                <button name="delete" value="<%out.print(rs.getString(1));%>" class="btn btn-primary d-inline-flex">
                                     Delete
                                 </button>
                             </form>
@@ -209,7 +209,7 @@
                             <div class="modal-body">
                                 <form action="modify" method="post" enctype="multipart/form-data" >
                                     
-                                    </div>
+                                   <!-- </div> -->
                                     <div class="form-group row">
                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
                                         <div class="col-sm-7">
@@ -252,12 +252,14 @@
                 <%
 //                        }
                         }
-                    } catch (Exception ex) {
+                    } catch (Exception ex)
+                    {
                         out.println(ex);
-                    }%>
+                    }
+                %>
             </div>    
         </div>
-    </div>  
+    </div>
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!-- Popper JS -->
