@@ -177,7 +177,7 @@
                     <div class="col ">
                         <div class="card h-100 mt-2">
                             <%
-                                out.print("<img src=" + rs.getString(4) + " width='100%' height='50%' alt='Tulips'/>");
+                                out.print("<img src=" + rs.getString(4) + " width='100%' height='300px' alt='Tulips'/>");
                             %>
                             <div class="card-body">
                                 <h5 class="card-title"><% out.print(rs.getString(2)); %></h5>
