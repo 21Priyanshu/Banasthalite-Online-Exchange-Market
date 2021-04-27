@@ -11,6 +11,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+      
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
         <link href="css/sample.css" rel="stylesheet">
@@ -21,20 +22,54 @@
                 height: auto;
                 /*background-color: red;*/
             }
+            .vertical{
+                display: none;
+                width: 15%;
+                height: 100%;
+                position: relative;
+                padding-top: 0px;
+                background-color: #f1f1f1;
+                overflow-x: hidden;
+                transition: 0.5s;
+             }
+            .vertical a {
+                padding: 8px 8px 8px 32px;
+                text-decoration: none;
+                font-size: 25px;
+                color: #000;
+                display: block;
+                transition: 0.3s;
+                /**/
+            }
+            .closebtn {
+                margin-left: 60%;
+                font-size: 30px;
+                /*margin-right: 10px;*/
+            }
+            .vertical  a.active {
+                background-color: #4CAF50;
+                color: white;
+            }
+            .vertical a:hover{
+                background-color: #555;
+                color: whitesmoke;
+            }
+            .ham{
+                font-size: 30px;
+                cursor: pointer;
+            }
         </style>
 </head>
-    <body class="bg">
-        <div class="navbar nav">
-             <div class="r-navlist nav">
-                <div class="ham">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-            <ul>
-                    <li>Banasthalite Online Exchange Market</li>
-            </ul>
+<body class="bg">
+    <div class="navbar nav">
+        <div class="r-navlist nav">
+            <div class="ham">
+                <p onclick="openNav()">&#9776;</p>
             </div>
+            <ul>
+                <li>Banasthalite Online Exchange Market</li>
+            </ul>
+        </div>
             
             
             <div class="dropdown nav">
@@ -76,15 +111,13 @@
             </div>
         </div>
         <div class="bg_container">
-        <div class="vertical">
-                    <ul>
-                        
-                        <!--<li><a href="AddItem.jsp">Add Item</a></li>-->
-                        <li><a href=#mymodal data-toggle="modal">Add Item</a></li>
-                        <li>Display Item</li>
-                        <li>Profile</li>
-                        <li><a href="Logout.jsp">Logout</a></li>
-                    </ul>
+        <div class="vertical" id="vertical">
+            <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href=#mymodal data-toggle="modal">Add Item</a>
+            <a href="#modify_modal" data-toggle="modal">Display Item</a>
+            <a>Profile</a>
+            <a href="Logout.jsp">Logout</a>
+        </div>  
               <div class="modal" id="mymodal">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
@@ -180,13 +213,24 @@
                 %>
             </div>    
         </div>
-        </div>  
+        
             <!-- jQuery library -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <!-- Popper JS -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+        
+        function openNav() {
+//      document.getElementById("vertical").style.width = "250px";
+  document.getElementById("vertical").style.display = "block";
+}
+function closeNav() {
+  document.getElementById("vertical").style.display = "none";
+}
+    </script>
+        
     </body>
 </html>
 

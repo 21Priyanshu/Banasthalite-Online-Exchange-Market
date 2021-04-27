@@ -34,9 +34,7 @@
                 display: block;
                 transition: 0.3s;
                 /**/
-
             }
-
             .closebtn {
                 margin-left: 60%;
                 font-size: 30px;
@@ -67,6 +65,9 @@
             </ul>
         </div>
         <div class="dropdown nav">
+            <form action="rindex.jsp">
+                 <button name="btn">Rent</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </form>
             <button >Login</button>
             <div class="dropdown-content dropdown-menu-right">
                 <a href="#mymodal2" data-toggle="modal">Buyer</a>
@@ -165,7 +166,7 @@
                     String u = session.getAttribute("userId").toString();
                     try {
                         Class.forName("org.apache.derby.jdbc.ClientDriver");
-                        Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
+                        Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/Bolx");
                         Statement stmt1 = conn.createStatement();
                         ResultSet rs = stmt1.executeQuery("select * from item where uid='" + u + "'");
                         while (rs.next()) {
@@ -180,22 +181,22 @@
                             <h5 class="card-title"><% out.print(rs.getString(2)); %></h5>
                             <h6 class="card-text">&#8377 <%out.print(rs.getString(6));%></h6>
                             <p class="card-text"><%out.print(rs.getString(5));%></p> 
-<!--                            <form action="delete" >
+                           <form action="delete" >
                                 <button name="delete" value="<%out.print(rs.getString(1));%>" class="btn btn-primary indexbutton">
                                     Delete
                                 </button>
                             </form>
                             <br>
                             <form >
-                                <button data-target="#modify_modal" data-toggle="modal" type="button" name="modify"  >
+                                <button data-target="#modify_modal" data-toggle="modal" type="button" name="modify" >
                                     Modify
                                 </button>
-                            </form>-->
+                            </form>
                         </div>
                     </div>
                 </div>  
                 <%
-//                    if (request.getParameter("modify")!= null){
+//                   if (request.getParameter("modify")!= null){
                 %>
                 <div class="modal" id="modify_modal">
                     <div class="modal-dialog modal-dialog-centered">
@@ -207,11 +208,7 @@
                             </div>
                             <div class="modal-body">
                                 <form action="modify" method="post" enctype="multipart/form-data" >
-                                    <div class="form-group row">
-                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
-                                        <div class="col-sm-7">
-                                            <input type="hidden" id="itemid" name="itemid" value="">
-                                        </div>
+                                    
                                     </div>
                                     <div class="form-group row">
                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
@@ -273,7 +270,6 @@
 //      document.getElementById("vertical").style.width = "250px";
   document.getElementById("vertical").style.display = "block";
 }
-
 function closeNav() {
   document.getElementById("vertical").style.display = "none";
 }
