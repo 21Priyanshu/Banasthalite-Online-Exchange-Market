@@ -20,7 +20,7 @@
                 display: block;
             }
             .vertical{
-                display: none;
+                /*display: none;*/
                 width: 15%;
                 height: 100%;
                 position: relative;
@@ -95,17 +95,22 @@
             }
             .modal1 {
                 margin: auto;
+                display: block;
                 /*display: none;*/  
                 position: fixed; /* Stay in place */
                 z-index: 1; /* Sit on top */
                 /*padding-top: 100px;  Location of the box */
-                left: 33%;
-                top: 15%;
-                width: 32%; /* Full width */
-                height: auto; /* Full height */
-                /*  overflow: ;*/ /* Enable scroll if needed */
+                width: 100%;
+                height: 100%;
+                left: 0;
+                top: 0;
+                /*left: 33%;*/
+/*                top: 15%;
+                width: 32%;  Full width */
+                /*height: auto;  Full height */
+                  overflow:auto ; /* Enable scroll if needed */
                 background-color: rgb(0,0,0); /* Fallback color */
-                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+                background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
             }
             .modal_body {
                 position: relative;
@@ -115,12 +120,15 @@
             }
 
             /* Modal Content */
-            .modal_content {
+            .modal_content {position: relative;
                 background-color: #fefefe;
                 margin: auto;
                 /* padding: 20px; */
                 border: 1px solid #888;
-                width: 100%;
+                width: 32%;
+                height: auto;
+                /*left: 33%;*/
+                top: 15%;
             }
             .modal_header {
                 display: -ms-flexbox;
@@ -161,6 +169,7 @@
         </style>
 </head>
 <body class="bg">
+    
     <div class="navbar nav">
         <div class="r-navlist nav">
             <div class="ham">
@@ -214,7 +223,7 @@
         <div class="vertical" id="vertical">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href=#mymodal data-toggle="modal">Add Item</a>
-            <a href="#modify_modal" data-toggle="modal">Display Item</a>
+            <a href="Index.jsp" >Display Item</a>
             <a>Profile</a>
             <a href="Logout.jsp">Logout</a>
         </div>     
@@ -271,11 +280,12 @@
             <div class="row  row-cols-4 g-4 mt-0 mx-1" >
                 <%
                     String u = session.getAttribute("userId").toString();
+                    int itemid = Integer.parseInt(request.getParameter("modify"));
                     try {
                         Class.forName("org.apache.derby.jdbc.ClientDriver");
                         Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
                         Statement stmt1 = conn.createStatement();
-                        ResultSet rs = stmt1.executeQuery("select * from item where uid='" + u + "'");
+                        ResultSet rs = stmt1.executeQuery("select * from item where itemid=" + itemid );
                         while (rs.next()) {
                 %>
                 <div class="col ">
@@ -298,7 +308,7 @@
 <!--                                <button data-target="#modify_modal" data-toggle="modal" type='button' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
                                     Modify
                                 </button>-->
-                                <button   onclick="openModal()" id="modify_btn" type='button' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
+                                <button  id="modify_btn" type='button' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
                                     Modify
                                 </button>
                                 
@@ -310,11 +320,12 @@
                                             <div class="modal_header">
                                                 <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
                                                 <h3 class="text-center mod">Modify Item</h3>                                    
-                                                <span class="close" onclick="closeModal()">&times;</span>
+                                                <!--<span class="close" >&times;</span>-->
+                                                <a href="Index.jsp" class="close">&times</a>
 
                                             </div>
                                             <div class="modal_body">
-                                                <form action="modify" method="post" enctype="multipart/form-data" >
+                                                <form action="modify" method="post" enctype="multipart/form-data" autocomplete="on">
                                                     <div class="form-group row">
                                                         <!--<label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>-->
                                                         <div class="col-sm-7">
@@ -324,7 +335,7 @@
                                                     <div class="form-group row">
                                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle" required>
+                                                            <input type="text" value="<% out.print(rs.getString(2)); %>" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -336,19 +347,19 @@
                                                     <div class="form-group row">
                                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Description </h6></label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control form-control-sm" name="idescription" required>
+                                                            <input type="text" value="<%out.print(rs.getString(5));%>" class="form-control form-control-sm" name="idescription" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Price </h6></label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control form-control-sm" name="price" required>
+                                                            <input type="text" value="<%out.print(rs.getString(6));%>" class="form-control form-control-sm" name="price" required>
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
                                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" class="form-control form-control-sm" name="category" required>
+                                                            <input type="text" value="<%out.print(rs.getString(7));%>" class="form-control form-control-sm" name="category" required>
                                                         </div>
                                                     </div>
                                                     <div class="modal-footer justify-content-center">
@@ -393,15 +404,44 @@ function closeNav() {
   document.getElementById("vertical").style.display = "none";
 }
 
-function openModal(){
-    document.getElementById("myModal").style.display="block";
-//    modal.style.display="block";
-}
-function closeModal(){
-    document.getElementById("myModal").style.display="none";
-//    modal.style.display="none";
+//function openModal(){
+//    document.getElementById("myModal").style.display="block";
+////    modal.style.display="block";
+//}
+//function closeModal(){
+//    document.getElementById("myModal").style.display="none";
+////    modal.style.display="none";
+//}
+//var modal=document.getElementById("myModal");
+//    window.onclick = function(event) {
+//  if (event.target == modal) {
+//    modal.style.display = "none";
+//  }
+//};
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("modify_Btn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
 }
 
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
     </script>
 </body>
 </html>
