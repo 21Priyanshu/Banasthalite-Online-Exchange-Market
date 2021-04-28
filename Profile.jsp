@@ -20,7 +20,7 @@
                 display: block;
             }
             .vertical{
-                /*display: none;*/
+                display: none;
                 width: 15%;
                 height: 100%;
                 position: relative;
@@ -83,6 +83,15 @@
                 box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
                 /*z-index: 1;*/
             }
+/*            .dropdown:hover {
+  background-color: #ddd;
+}*/
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    background-color: #ddd;
+  display: block;
+}
 
             /* Links inside the dropdown */
             .dropdown-content a {
@@ -95,22 +104,17 @@
             }
             .modal1 {
                 margin: auto;
-                display: block;
-                /*display: none;*/  
+                /*display: none;  Hidden by default */
                 position: fixed; /* Stay in place */
                 z-index: 1; /* Sit on top */
                 /*padding-top: 100px;  Location of the box */
-                width: 100%;
-                height: 100%;
-                left: 0;
-                top: 0;
-                /*left: 33%;*/
-/*                top: 15%;
-                width: 32%;  Full width */
-                /*height: auto;  Full height */
-                  overflow:auto ; /* Enable scroll if needed */
+                left: 33%;
+                top: 15%;
+                width: 32%; /* Full width */
+                height: auto; /* Full height */
+                /*  overflow: ;*/ /* Enable scroll if needed */
                 background-color: rgb(0,0,0); /* Fallback color */
-                background-color: rgba(0,0,0,0.5); /* Black w/ opacity */
+                background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
             }
             .modal_body {
                 position: relative;
@@ -120,15 +124,12 @@
             }
 
             /* Modal Content */
-            .modal_content {position: relative;
+            .modal_content {
                 background-color: #fefefe;
                 margin: auto;
                 /* padding: 20px; */
                 border: 1px solid #888;
-                width: 32%;
-                height: auto;
-                /*left: 33%;*/
-                top: 15%;
+                width: 100%;
             }
             .modal_header {
                 display: -ms-flexbox;
@@ -142,14 +143,11 @@
                 border-top-left-radius: calc(.3rem - 1px);
                 border-top-right-radius: calc(.3rem - 1px);
             }
-            .mod{
-                min-width: 35%;
-            }
 
             /* The Close Button */
             .close {
                 margin-top: 1%;
-                margin-left: 50%;
+                margin-left: 55%;
                 /* background-color: red; */
                 float: right;
                 font-size: 1.5rem;
@@ -169,7 +167,6 @@
         </style>
 </head>
 <body class="bg">
-    
     <div class="navbar nav">
         <div class="r-navlist nav">
             <div class="ham">
@@ -223,11 +220,12 @@
         <div class="vertical" id="vertical">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href=#mymodal data-toggle="modal">Add Item</a>
-            <a href="Index.jsp" >Display Item</a>
+            <a href="Index.jsp" data-toggle="modal">Display Item</a>
             <a href="#Profile_Modal" data-toggle="modal">Profile</a>
             <a href="Logout.jsp">Logout</a>
-        </div>     
-      <div class="modal" id="Profile_Modal">
+             
+
+         <div class="modal" id="Profile_Modal">
               <%
                     String u = session.getAttribute("userId").toString();
                     try {
@@ -315,7 +313,7 @@
                         out.println(ex);
                     }%>
         </div>
-<!--        <div class="modal" id="mymodal">
+        <div class="modal" id="mymodal">
             <div class="modal-dialog modal-dialog-centered">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -362,23 +360,23 @@
                     </div>
                 </div>
             </div>
-        </div>-->
+        </div>
+        </div>
         <div class="display" >
             <div class="row  row-cols-4 g-4 mt-0 mx-1" >
                 <%
                     u = session.getAttribute("userId").toString();
-                    int itemid = Integer.parseInt(request.getParameter("modify"));
                     try {
                         Class.forName("org.apache.derby.jdbc.ClientDriver");
                         Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
                         Statement stmt1 = conn.createStatement();
-                        ResultSet rs = stmt1.executeQuery("select * from item where itemid=" + itemid );
+                        ResultSet rs = stmt1.executeQuery("select * from item where uid='" + u + "'");
                         while (rs.next()) {
                 %>
                 <div class="col ">
                     <div class="card h-100 cardh " >
                         <%
-                            
+                            int item_id = Integer.parseInt(rs.getString(1));
                             out.print("<img src=" + rs.getString(4) + " width='100%' height='300px' alt='Tulips'/>");
                         %>
                         <div class="card-body">
@@ -391,72 +389,17 @@
                                 </button>
                             </form>
                             <br>
-                            <form id='modify_form'>
+                            <form id='modify_form' action="Index_try.jsp">
 <!--                                <button data-target="#modify_modal" data-toggle="modal" type='button' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
                                     Modify
                                 </button>-->
-                                <button  id="modify_btn" type='button' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
+                                <button   type='submit' value="<%out.print(rs.getString(1));%>" name="modify"  class="btn btn-primary card-link" >
                                     Modify
                                 </button>
                                 
                             </form>
-                                    <div id="myModal" class="modal1">
-                                        <% // int id= Integer.parseInt(request.getParameter("modify")); %>
-                                        <!-- Modal content -->
-                                        <div class="modal_content">
-                                            <div class="modal_header">
-                                                <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
-                                                <h3 class="text-center mod">Modify Item</h3>                                    
-                                                <!--<span class="close" >&times;</span>-->
-                                                <a href="Index.jsp" class="close">&times</a>
 
-                                            </div>
-                                            <div class="modal_body">
-                                                <form action="modify" method="post" enctype="multipart/form-data" autocomplete="on">
-                                                    <div class="form-group row">
-                                                        <!--<label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>-->
-                                                        <div class="col-sm-7">
-                                                            <input type="hidden" id="itemid" name="itemid" value="<%out.print(request.getParameter("modify"));%>">
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Item Name </h6></label>
-                                                        <div class="col-sm-7">
-                                                            <input type="text" value="<% out.print(rs.getString(2)); %>" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Add Photo </h6></label>
-                                                        <div class="col-sm-7">
-                                                            <input type="file" class="form-control form-control-sm form-control-file" name="itemphotos" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Description </h6></label>
-                                                        <div class="col-sm-7">
-                                                            <input type="text" value="<%out.print(rs.getString(5));%>" class="form-control form-control-sm" name="idescription" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Price </h6></label>
-                                                        <div class="col-sm-7">
-                                                            <input type="text" value="<%out.print(rs.getString(6));%>" class="form-control form-control-sm" name="price" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="form-group row">
-                                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
-                                                        <div class="col-sm-7">
-                                                            <input type="text" value="<%out.print(rs.getString(7));%>" class="form-control form-control-sm" name="category" required>
-                                                        </div>
-                                                    </div>
-                                                    <div class="modal-footer justify-content-center">
-                                                        <button type="submit" class="btn btn-primary" >Modify</button>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                        </div>
 
-                                    </div>
                         </div>
                     </div>
                 </div>  
@@ -490,29 +433,16 @@
 function closeNav() {
   document.getElementById("vertical").style.display = "none";
 }
-
-//function openModal(){
-//    document.getElementById("myModal").style.display="block";
-////    modal.style.display="block";
-//}
-//function closeModal(){
-//    document.getElementById("myModal").style.display="none";
-////    modal.style.display="none";
-//}
-//var modal=document.getElementById("myModal");
-//    window.onclick = function(event) {
-//  if (event.target == modal) {
-//    modal.style.display = "none";
-//  }
-//};
 var modal = document.getElementById("myModal");
 
 // Get the button that opens the modal
-var btn = document.getElementById("modify_Btn");
+var btn = document.getElementById("modify_btn");
 
 // Get the <span> element that closes the modal
 var span = document.getElementsByClassName("close")[0];
-
+function openModal(){
+    modal.style.display="block";
+}
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
   modal.style.display = "block";
