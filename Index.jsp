@@ -304,7 +304,7 @@
 <!--                                <button data-target="#modify_modal" data-toggle="modal" type='button' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
                                     Modify
                                 </button>-->
-                                <button   type='submit' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
+                                <button   type='submit' value="<%out.print(rs.getString(1));%>" name="modify"  class="btn btn-primary card-link" >
                                     Modify
                                 </button>
                                 
