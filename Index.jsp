@@ -1,4 +1,3 @@
-<%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -194,7 +193,7 @@
                             <button type="button" class="close" data-dismiss="modal"> &times;</button> 
                         </div>
                         <div class="modal-body">
-                            <form action="buyer_login.jsp" method="post">
+                            <form action="b login.jsp" method="post">
                                 <div class="form-group row">
                                     <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
                                     <div class="col-sm-10">
@@ -366,8 +365,9 @@
                 <%
                     u = session.getAttribute("userId").toString();
                     try {
-                        DbConnection obj=new DbConnection();
-                        Statement stmt1 = obj.c.createStatement();
+                        Class.forName("org.apache.derby.jdbc.ClientDriver");
+                        Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
+                        Statement stmt1 = conn.createStatement();
                         ResultSet rs = stmt1.executeQuery("select * from item where uid='" + u + "'");
                         while (rs.next()) {
                 %>
