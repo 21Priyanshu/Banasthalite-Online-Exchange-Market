@@ -122,7 +122,9 @@
                 display: block;
                 text-align: left;
             }
-            
+            .loginbutton{
+              padding-top: 0px;  
+            }
         </style>
     </head>
 
@@ -137,8 +139,8 @@
                     <li>Banasthalite Online Exchange Market</li>
                 </ul>
             </div>
-            <div class="dropdown nav">
-                <button >Login
+            <div class="dropdown nav loginbutton">
+                <button class="btn btn-outline-success my-2 my-sm-0 ">Login
                 </button>
                 <div class="dropdown-content">
                     <a href="#mymodal" data-toggle="modal">Seller</a>
@@ -152,7 +154,7 @@
                                     <button type="button" class="close" data-dismiss="modal"> &times;</button> 
                                 </div>
                                 <div class="modal-body">
-                                    <form action="s login.jsp" >
+                                    <form action="seller_login.jsp" >
                                         <div class="form-group row">
                                             <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
                                             <div class="col-sm-10">
@@ -256,7 +258,7 @@ function closeNav() {
         }
     }
     String postmessage = session.getAttribute("message").toString();    
-    out.println(postmessage);
+    
     if (postmessage != null) {
 
 %>

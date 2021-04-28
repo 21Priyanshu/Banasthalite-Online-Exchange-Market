@@ -35,9 +35,7 @@
             .searchcat{
                 margin-left:35%;
             }
-            .indexbutton{
-                margin:15px;
-            }
+            
             .cardh{
                 height: auto;
                 /*background-color: red;*/
@@ -128,7 +126,12 @@
                 display: block;
                 text-align: left;
             }
-            
+/*            .loginbutton{
+              padding-top: 0px;  
+            }*/
+            .adjust_button{
+                display: inline;
+            }
         </style>
     </head>
 
@@ -147,8 +150,8 @@
             <input class="form-control mr-sm-2" name="category" type="search" placeholder="Enter a category" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
-            <div class="dropdown nav">
-                <button >Login
+            <div class="dropdown nav loginbutton">
+                <button class="btn btn-outline-success my-2 my-sm-0 ">Login
                 </button>
                 <div class="dropdown-content">
                     <a href="#mymodal" data-toggle="modal">Seller</a>
@@ -162,7 +165,7 @@
                                     <button type="button" class="close" data-dismiss="modal"> &times;</button> 
                                 </div>
                                 <div class="modal-body">
-                                    <form action="s login.jsp" >
+                                    <form action="seller_login.jsp" >
                                         <div class="form-group row">
                                             <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
                                             <div class="col-sm-10">
@@ -213,14 +216,18 @@
                                 <h5 class="card-title"><% out.print(rs.getString(2)); %></h5>
                                 <h6 class="card-text">&#8377 <%out.print(rs.getString(6));%></h6>
                                 <p class="card-text"><%out.print(rs.getString(5));%></p> </div>
-                            <form>
-                            <button class="btn btn-primary card-text indexbutton"  name="btn_wish" value="<%out.print(rs.getString(1));%>">
-                                add to wishlist
-                            </button>
-                            <button class="btn btn-primary card-text"  name="btn_buy" value="<%out.print(rs.getString(1));%>">
-                                buy
-                            </button>
-                            </form>
+                                <form class="adjust_button">
+                                    <button class="btn btn-primary card-text mr-4"  name="btn_wish" value="<%out.print(rs.getString(1));%>">
+                                        add to wishlist
+                                    </button>
+                                </form>
+
+                                <form class="adjust_button" action="buy.jsp">
+                                    <button class="btn btn-primary card-text" name="btn_buy" value="<% out.print(rs.getString(1)); %>">
+                                        buy
+                                    </button>
+
+                                </form>
                         </div>
                     </div>
                     <%}%>
