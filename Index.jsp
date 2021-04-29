@@ -9,6 +9,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Home</title>
         <link href="css/sample.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
@@ -164,6 +165,21 @@
                 text-decoration: none;
                 cursor: pointer;
             }
+            .noitem{
+                position: fixed;
+                /*width: 1000px;*/
+                text-align: center;
+                background-color: rgba(0,0,0,0.4);
+                /*background-color: #555;*/
+                color: white;
+                padding: 30px;
+                margin-top: 15%;
+                margin-left: 30%;
+            }
+             input {
+       border-style: none;
+        background-color: #eee;
+      }
         </style>
 </head>
 <body class="bg">
@@ -178,9 +194,9 @@
         </div>
         <div class="dropdown nav">
             <form action="rindex.jsp">
-                <button name="btn" class="rent_btn">Rent</button>
+                <button name="btn" class="rent_btn btn btn-outline-success my-2 my-sm-0">Rent</button>
             </form>
-            <button >Login</button>
+            <button class="btn btn-outline-success my-2 my-sm-0 ">Login</button>
             <div class="dropdown-content dropdown-menu-right login_btn">
                 <a href="#mymodal2" data-toggle="modal">Buyer</a>
             </div>
@@ -189,7 +205,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
-                            <h3 class="text-center">Buyer Login</h3>
+                            <h3 class="text-center ">Buyer Login</h3>
                             <button type="button" class="close" data-dismiss="modal"> &times;</button> 
                         </div>
                         <div class="modal-body">
@@ -220,11 +236,12 @@
         <div class="vertical" id="vertical">
             <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
             <a href=#mymodal data-toggle="modal">Add Item</a>
-            <a href="#modify_modal" data-toggle="modal">Display Item</a>
+            <a href="Index.jsp" >Display Item</a>
             <a href="#Profile_Modal" data-toggle="modal">Profile</a>
             <a href="Logout.jsp">Logout</a>
-        </div>     
-       <div class="modal" id="Profile_Modal">
+             
+
+         <div class="modal" id="Profile_Modal">
               <%
                     String u = session.getAttribute("userId").toString();
                     try {
@@ -247,7 +264,7 @@
                                                     <div class="form-group row">
                                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Name </h6></label>
                                                         <div class="col-sm-7">
-                                                            <input type="text" name="sname" value="<% out.print(rs.getString(1)); %>" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle" required>
+                                                            <input type="text" name="sname" value="<% out.print(rs.getString(1)); %>" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle"  required >
                                                         </div>
                                                     </div>
                                                     <div class="form-group row">
@@ -360,6 +377,7 @@
                 </div>
             </div>
         </div>
+        </div>
         <div class="display" >
             <div class="row  row-cols-4 g-4 mt-0 mx-1" >
                 <%
@@ -369,7 +387,20 @@
                         Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
                         Statement stmt1 = conn.createStatement();
                         ResultSet rs = stmt1.executeQuery("select * from item where uid='" + u + "'");
-                        while (rs.next()) {
+                        if(rs.next()==false){%>
+                        <div class="noitem">
+                            
+                            <i class="fa fa-frown-o" style="font-size:48px;"></i>
+                            <h3>Oops!!</h3>
+                            <p>No Item Added!!!</p>
+                            <p>Go to AddItem Menu</p>
+<!--                            <a href=#mymodal data-toggle="modal"> Click here to Add Item</a>-->
+                        </div>
+                        <%}
+                        else{
+                             rs = stmt1.executeQuery("select * from item where uid='" + u + "'");
+                        
+                        while(rs.next()) {
                 %>
                 <div class="col ">
                     <div class="card h-100 cardh " >
@@ -381,13 +412,14 @@
                             <h5 class="card-title"><% out.print(rs.getString(2)); %></h5>
                             <h6 class="card-text">&#8377 <%out.print(rs.getString(6));%></h6>
                             <p class="card-text"><%out.print(rs.getString(5));%></p> 
+                            <p class="card-text"><%out.print(rs.getString(1));%></p> 
                             <form action="delete" >
                                 <button name="delete" value="<%out.print(rs.getString(1));%>" class="btn btn-primary indexbutton card-link">
                                     Delete
                                 </button>
                             </form>
                             <br>
-                            <form id='modify_form' action="Profile.jsp">
+                            <form id='modify_form' action="Index_try.jsp">
 <!--                                <button data-target="#modify_modal" data-toggle="modal" type='button' value="<%out.print(rs.getString(1));%>" name="modify"  class="card-link" >
                                     Modify
                                 </button>-->
@@ -408,6 +440,7 @@
 
                 <%
 //                        }
+                        }
                         }
                     } catch (Exception ex) {
                         out.println(ex);
