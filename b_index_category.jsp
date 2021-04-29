@@ -35,7 +35,7 @@
             .searchcat{
                 margin-left:35%;
             }
-            
+           
             .cardh{
                 height: auto;
                 /*background-color: red;*/
@@ -112,7 +112,7 @@
             }*/
             .dropdown:hover .dropdown-content {
                 display: block;
-                z-index: 1;
+                
                 background-color: #ddd;
           }
             
@@ -126,9 +126,9 @@
                 display: block;
                 text-align: left;
             }
-/*            .loginbutton{
+            .loginbutton{
               padding-top: 0px;  
-            }*/
+            }
             .adjust_button{
                 display: inline;
             }
@@ -215,7 +215,7 @@
                             <div class="card-body">
                                 <h5 class="card-title"><% out.print(rs.getString(2)); %></h5>
                                 <h6 class="card-text">&#8377 <%out.print(rs.getString(6));%></h6>
-                                <p class="card-text"><%out.print(rs.getString(5));%></p> </div>
+                                <p class="card-text"><%out.print(rs.getString(5));%></p> 
                                 <form class="adjust_button">
                                     <button class="btn btn-primary card-text mr-4"  name="btn_wish" value="<%out.print(rs.getString(1));%>">
                                         add to wishlist
@@ -228,6 +228,7 @@
                                     </button>
 
                                 </form>
+                                </div>
                         </div>
                     </div>
                     <%}%>
