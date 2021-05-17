@@ -3,6 +3,7 @@
     Created on : 9 Mar, 2021, 3:19:23 PM
     Author     : HP
 --%>
+<%@page import="myproject.flag"%>
 <%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -39,7 +40,9 @@
             ps.setString(10, cno);
             int i=ps.executeUpdate();
             if(i==1){
-                response.sendRedirect("MasterpReupdatd.html");
+                flag obj1 = new flag();
+                    obj1.setflag(1);
+                response.sendRedirect("MasterReupdatd.jsp");
             }
             else
                 response.sendRedirect("error.jsp");

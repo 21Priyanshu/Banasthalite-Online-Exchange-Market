@@ -1,3 +1,4 @@
+<%@page import="myproject.flag"%>
 <%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -34,8 +35,9 @@
             ps.setString(10, cno);
             int i=ps.executeUpdate();
             if(i==1){
-                 session.setAttribute("message","Signup successfully");
-                 response.sendRedirect("MasterpReupdatd.html");
+                 flag obj1 = new flag();
+                    obj1.setflag(1);
+                 response.sendRedirect("MasterReupdatd.jsp");
                  return;
             }
             else
