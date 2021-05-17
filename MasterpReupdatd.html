@@ -11,7 +11,7 @@
     </head>
     <body>
         <header>
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
                 <a class="navbar-brand" href="#about">About Us</a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -83,17 +83,17 @@
                                         <div class="form-group row">
                                             <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
                                             <div class="col-sm-10">
-                                                <input type="text" name="uid" class="form-control" required>
+                                                <input type="text" name="uid" id="userId" class="form-control" required>
                                             </div>
                                         </div>
                                         <div class="form-group row">
                                             <label for="inputPassword" class="col-sm-2 col-form-label"><h6>Password </h6></label>
                                             <div class="col-sm-10">
-                                                <input type="password" name="password" class="form-control" size=40 required/>
+                                                <input type="password" name="password" id="pass" class="form-control" size=40 required/>
                                             </div>
                                         </div>
                                         <div class="modal-footer justify-content-center">
-                                            <button type="submit" class="btn btn-primary" > Login</button>
+                                            <button type="submit" class="btn btn-primary" onClick="validate(this.form)" > Login</button>
                                         </div>
                                     </form>
                                 </div>
@@ -109,7 +109,7 @@
                                     <button type="button" class="close" data-dismiss="modal"> &times;</button> 
                                 </div>
                                 <div class="modal-body">
-                                    <form action="seller_registration.jsp">
+                                    <form action="seller_registration.jsp" onsubmit= "return validate()">
                                         <div class="form-group row">
                                             <label for="name" class="col-sm-2 col-form-label"> <h6> Name </h6></label>
                                             <div class="col-sm-10">	
@@ -119,19 +119,25 @@
                                         <div class="form-group row">
                                             <label for="user_id" class="col-sm-2 col-form-label" > <h6> UserID </h6></label>
                                             <div class="col-sm-10">	
-                                                <input type="text" name="uid" class="form-control" required>
+                                                <input type="text" name="uid" id="userId" class="form-control" required><div id="f1"></div>
                                             </div> 
                                         </div> 
                                         <div class="form-group row">
                                             <label for="password" class="col-sm-2 col-form-label" > <h6> Password </h6></label>
                                             <div class="col-sm-10">	
-                                                <input type="password" name="password" class="form-control" size=30 required/>
+                                             <input type="password" name="password" id= "pass" class="form-control" size=30 required/><div id="f2"></div>
+                                            </div>
+                                        </div> 
+                                        <div class="form-group row">
+                                            <label for="password" class="col-sm-2 col-form-label" > <h6> Re_enter</h6></label>
+                                            <div class="col-sm-10">	
+                                              <input type="password" name="rpassword" id="cpass" class="form-control" size=30 required/><div id="f3"></div>
                                             </div>
                                         </div> 
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-2 col-form-label" > <h6> Email </h6></label>
                                             <div class="col-sm-10">	
-                                                <input type="email" name="emailid" class="form-control" required>
+                                                <input type="email" name="emailid" id="email" class="form-control" required>
                                             </div> 
                                         </div> 
                                         <div class="form-group row">
@@ -167,11 +173,11 @@
                                         <div class="form-group row">
                                             <label for="contact" class="col-sm-2 col-form-label" > <h6> Mobile</h6></label>
                                             <div class="col-sm-10">	
-                                                <input type="tel" name="contact" class="form-control"  pattern="[1-9]{1}[0-9]{9}" required>
+                                                <input type="tel" name="contact" id="contact" class="form-control"  pattern="[1-9]{1}[0-9]{9}" required>
                                             </div> 
                                         </div> 
                                         <div class="modal-footer justify-content-center">
-                                            <button type="submit" class="btn btn-primary " > Sign UP</button>
+                                            <button type="submit" class="btn btn-primary " onClick="validate(this.form)" > Sign UP</button>
                                         </div>
                                     </form> 
                                 </div>
@@ -187,7 +193,7 @@
                                     <button type="button" class="close" data-dismiss="modal"> &times;</button> 
                                 </div>
                                 <div class="modal-body">
-                                    <form action="buyer_registration.jsp">
+                                    <form action="buyer_registration.jsp" >
                                         <div class="form-group row">
                                             <label for="name" class="col-sm-2 col-form-label"> <h6> Name </h6></label>
                                             <div class="col-sm-10">	
@@ -197,19 +203,25 @@
                                         <div class="form-group row">
                                             <label for="user_id" class="col-sm-2 col-form-label" > <h6> UserID </h6></label>
                                             <div class="col-sm-10">	
-                                                <input type="text" name="uid" class="form-control" required>
+                                                <input type="text" name="uid" id="user" class="form-control" required><div id="f4"></div>
                                             </div> 
                                         </div> 
                                         <div class="form-group row">
                                             <label for="password" class="col-sm-2 col-form-label" > <h6> Password </h6></label>
                                             <div class="col-sm-10">	
-                                                <input type="password" name="password" class="form-control" size=30 required/>
+                                               <input type="password" name="password" id="pass1" class="form-control" size=30 required/><div id="f5"></div>
                                             </div>
                                         </div> 
+                                         <div class="form-group row">
+                                            <label for="password" class="col-sm-2 col-form-label" > <h6> Re_enter</h6></label>
+                                            <div class="col-sm-10">	
+                                              <input type="password" name="rpassword" id="cpass1" class="form-control" size=30 required/><div id="f6"></div>
+                                            </div>
+                                         </div>
                                         <div class="form-group row">
                                             <label for="email" class="col-sm-2 col-form-label" > <h6> Email </h6></label>
                                             <div class="col-sm-10">	
-                                                <input type="email" name="emailid" class="form-control" required>
+                                                <input type="email" name="emailid" id="email1" class="form-control" required>
                                             </div> 
                                         </div> 
                                         <div class="form-group row">
@@ -245,11 +257,11 @@
                                         <div class="form-group row">
                                             <label for="contact" class="col-sm-2 col-form-label" > <h6> Mobile </h6></label>
                                             <div class="col-sm-10">	
-                                                <input type="tel" name="contact" class="form-control"  pattern="[1-9]{1}[0-9]{9}" required>
+                                                <input type="tel" name="contact" id="contact1" class="form-control"  pattern="[1-9]{1}[0-9]{9}" required>
                                             </div> 
                                         </div> 
                                         <div class="modal-footer justify-content-center">
-                                                <button type="submit" class="btn btn-primary " > Sign UP</button>
+                                                <button type="submit" class="btn btn-primary " onClick="validateform(this.form)"> Sign UP</button>
                                         </div>
                                     </form>
                                             </div>
@@ -285,7 +297,7 @@
                                             </div>
                                         </div>
                                             <div class="modal-footer justify-content-center">
-                                                <button class="btn btn-primary" name="btn_email" > Email</button>
+                                                <button class="btn btn-primary" name="btn_email"  > Email</button>
                                             </div>
 
                                        </form>
@@ -316,5 +328,121 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
         <!-- Latest compiled JavaScript -->
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+        <script>
+			function validate(){
+				var ID=document.getElementById("userId").value;
+				var Pass=document.getElementById("pass").value;
+				var CPass=document.getElementById("cpass").value;
+                                var Mail=document.getElementById("email").value;
+                                var phno=document.getElementById("contact").value;
+				var idRGEX=/^[A-Z]{5}[0-9]{5}$/;
+                                var mailRGEX=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                                            	var phRGEX=/^[1-9][0-9]{9}$/;
+				if(idRGEX.test(ID)==false || ID == ""){
+					document.getElementById("f1").innerHTML="Please enter your Banasthali id.";
+					return false;
+				}
+				else{
+					document.getElementById("f1").innerHTML="";
+				}
+				if(Pass == ""){
+					document.getElementById("f2").innerHTML="Please enter your password." ;
+					return false;
+				}
+				if(Pass.length<8){
+					document.getElementById("f2").innerHTML="Password must be of at least 8 characters long." ;
+					return false;
+				}
+				if(Pass.search(/[a-z]/) == -1){
+					document.getElementById("f2").innerHTML="There must be at least 1 lowercase character." ;
+					return false;
+				}
+				if(Pass.search(/[A-Z]/) == -1){
+					document.getElementById("f2").innerHTML="There must be  at least 1 uppercase character." ;
+					return false;
+				}
+				if(Pass.search(/[!\@\#\$\_\-\~\.]/) == -1){
+					document.getElementById("f2").innerHTML="There must be at least 1 special symbol." ;
+					return false;
+				}
+				else{
+					document.getElementById("f2").innerHTML="";
+				}
+				if(CPass!=Pass){
+					document.getElementById("f3").innerHTML="Password not matched!! Please re-enter your correct password.";
+					return false;
+				}
+				else{
+					document.getElementById("f3").innerHTML="";
+				}
+                                if(mailRGEX.test(Mail)==false || Mail == ""){
+                                                        	alert("Please enter a valid email address.");
+                                                        	return false;
+                                            	}
+                                            	if(phRGEX.test(phno)==false || phno == ""){
+                                            	        	alert("Please enter a valid contact number of 10 digits.");
+                                                        	return false;
+                                            	}
+				return true;
+			}
+		</script>
+                 <script>
+			function validateform(){
+				var ID=document.getElementById("user").value;
+				var Pass=document.getElementById("pass1").value;
+				var CPass=document.getElementById("cpass1").value;
+                                var Mail=document.getElementById("email1").value;
+                                var phno=document.getElementById("contact1").value;
+				var idRGEX=/^[A-Z]{5}[0-9]{5}$/;
+                                var mailRGEX=/^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
+                                            	var phRGEX=/^[1-9][0-9]{9}$/;
+				if(idRGEX.test(ID)==false || ID == ""){
+					document.getElementById("f4").innerHTML="Please enter your Banasthali id.";
+					return false;
+				}
+				else{
+					document.getElementById("f4").innerHTML="";
+				}
+				if(Pass == ""){
+					document.getElementById("f5").innerHTML="Please enter your password." ;
+					return false;
+				}
+				if(Pass.length<8){
+					document.getElementById("f5").innerHTML="Password must be of at least 8 characters long." ;
+					return false;
+				}
+				if(Pass.search(/[a-z]/) == -1){
+					document.getElementById("f5").innerHTML="There must be at least 1 lowercase character." ;
+					return false;
+				}
+				if(Pass.search(/[A-Z]/) == -1){
+					document.getElementById("f5").innerHTML="There must be  at least 1 uppercase character." ;
+					return false;
+				}
+				if(Pass.search(/[!\@\#\$\_\-\~\.]/) == -1){
+					document.getElementById("f5").innerHTML="There must be at least 1 special symbol." ;
+					return false;
+				}
+				else{
+					document.getElementById("f5").innerHTML="";
+				}
+				if(CPass!=Pass){
+					document.getElementById("f6").innerHTML="Password not matched!! Please re-enter your correct password.";
+					return false;
+				}
+				else{
+					document.getElementById("f6").innerHTML="";
+				}
+                                if(mailRGEX.test(Mail)==false || Mail == ""){
+                                                        	alert("Please enter a valid email address.");
+                                                        	return false;
+                                            	}
+                                            	if(phRGEX.test(phno)==false || phno == ""){
+                                            	        	alert("Please enter a valid contact number of 10 digits.");
+                                                        	return false;
+                                            	}
+				return true;
+			}
+		</script>
     </body>
 </html>
