@@ -35,9 +35,7 @@
                         int id = Integer.parseInt(request.getParameter("btn_buy"));
                         try {
                             DbConnection obj = new DbConnection();
-                            Statement stmt=obj.c.createStatement();
-                            int result=stmt.executeUpdate("update item set item_available='false' where itemid=" + id); 
-                            PreparedStatement ps = obj.c.prepareStatement("select * from seller where uid in(select uid from item where itemid=?)");
+                            PreparedStatement ps = obj.c.prepareStatement("select * from seller where uid in(select uid from rent where ritemid=?)");
                             ps.setInt(1, id);
                             ResultSet rs = ps.executeQuery();
                     if (rs.next()) {      %>  
@@ -86,7 +84,7 @@
                 }%>	
                 <div class="foot">
                     Back to
-                    <a href="b_index.jsp">Buyer Page</a>
+                    <a href="buyer_rent_index.jsp">Buyer Page</a>
                     <a href="MasterpReupdatd.html">Home Page</a>
                 </div>
 

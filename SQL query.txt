@@ -20,8 +20,8 @@ ritemphotos varchar(200) not null,
 rdescription varchar(100) not null,
 rprice integer not null,
 rcategory varchar(10) not null,
-rissuedate date,
-rduedate date,
+rissuedate varchar(15) ,
+rduedate varchar(15),
 ritem_available boolean not null
 );
 

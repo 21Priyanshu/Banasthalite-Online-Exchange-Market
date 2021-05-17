@@ -32,8 +32,8 @@
 
                 left:45%;
             }
-            .searchcat{
-                margin-left:35%;
+             .searchcat{
+                margin-left:25%;
             }
            
             .cardh{
@@ -132,6 +132,17 @@
             .adjust_button{
                 display: inline;
             }
+            .noitem{
+                position: fixed;
+                /*width: 1000px;*/
+                text-align: center;
+                background-color: rgba(0,0,0,0.4);
+                /*background-color: #555;*/
+                color: white;
+                padding: 30px;
+                margin-top: 15%;
+                margin-left: 30%;
+            }
         </style>
     </head>
 
@@ -151,6 +162,9 @@
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             <div class="dropdown nav loginbutton">
+                <form action="buyer_rent_index.jsp">
+                    <button name="btn" class="rent_btn btn btn-outline-success my-2 mr-4 my-sm-0">Rent</button>
+                </form>
                 <button class="btn btn-outline-success my-2 my-sm-0 ">Login
                 </button>
                 <div class="dropdown-content">
@@ -193,8 +207,97 @@
                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a href="b_index.jsp">Display Item</a>
                 <a href="wishlist.jsp">Wishlist</a>
-                <a>Profile</a>
+                 <a href="#Profile_Modal" data-toggle="modal">Profile</a>
                 <a href="Logout.jsp">Logout</a>
+           
+                       <!--Modal for displaying Profile-->
+                <div class="modal" id="Profile_Modal">
+                    <%
+                        String u = session.getAttribute("userId").toString();
+                        try {
+                            DbConnection obj = new DbConnection();
+                            Statement stmt1 = obj.c.createStatement();
+                            ResultSet rs = stmt1.executeQuery("select * from buyer where uid='" + u + "'");
+                            while (rs.next()) {
+                    %>
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
+                                <h3 class="text-center">Profile</h3>
+                                <button type="button" class="close" data-dismiss="modal"> &times;</button> 
+                            </div>
+                            <div class="modal-body">
+                                <form action="modify_buyer" >
+
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Name </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="sname" value="<% out.print(rs.getString(1)); %>" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle"  required >
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>ID </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="uid" value="<% out.print(rs.getString(2)); %>" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Email </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="emailid" value="<%out.print(rs.getString(4));%>" class="form-control form-control-sm" name="idescription" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Course </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="course" value="<%out.print(rs.getString(5));%>" class="form-control form-control-sm" name="price" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Branch </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="branch" value="<%out.print(rs.getString(6));%>" class="form-control form-control-sm" name="category" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Semester </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="sem" value="<%out.print(rs.getString(7));%>" class="form-control form-control-sm" name="category" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Hostel </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="hostel" value="<%out.print(rs.getString(8));%>" class="form-control form-control-sm" name="category" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Room No. </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="roomno" value="<%out.print(rs.getString(9));%>" class="form-control form-control-sm" name="category" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Contact No. </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="contact" value="<%out.print(rs.getString(10));%>" class="form-control form-control-sm" name="category" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="submit" class="btn btn-primary" >Modify</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <%
+//                        }
+                            }
+                        } catch (Exception ex) {
+                                                                out.println(ex);
+                                                            }%>
+                </div>
             </div>
             <div class="display" >
                 <div class="row  row-cols-4 row-cols-md-4 g-4 mt-1 mx-1 mb-4" >
@@ -206,7 +309,18 @@
                             ps.setString(1,"True");
                             ps.setString(2, c);
                             ResultSet rs = ps.executeQuery();
-                            while (rs.next()) {%>
+                               if (rs.next() == false) {%>
+                    <div class="noitem">
+
+                        <i class="fa fa-frown-o" style="font-size:48px;"></i>
+                        <h3>Oops!!</h3>
+                        <p>No Item Added!!!</p>
+                        <p>Go to AddItem Menu</p>
+                        <!--                            <a href=#mymodal data-toggle="modal"> Click here to Add Item</a>-->
+                    </div>
+                    <%} else {
+                    rs = ps.executeQuery();
+        while (rs.next()) {%>
                     <div class="col mb-2">
                         <div class="card h-100 cardh">
                             <%
@@ -233,7 +347,7 @@
                     </div>
                     <%}%>
                     <%
-                        } catch (Exception ex) {
+                        }} catch (Exception ex) {
                             out.println(ex);
                         }
                     %> 
@@ -257,7 +371,7 @@ function closeNav() {
 <%
     
     if (request.getParameter("btn_wish") != null) {
-        String u = session.getAttribute("userId").toString();
+        
         String primessage = "null";
         int id = Integer.parseInt(request.getParameter("btn_wish"));
         DbConnection obj = new DbConnection();

@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Buyer Home Page</title>
+        <title>Buyer Rent Page</title>
         <link href="css/sample.css" rel="stylesheet">
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
@@ -27,7 +27,7 @@
                 left:45%;
             }
             .searchcat{
-                margin-left:25%;
+                margin-left:35%;
             }
            
             .cardh{
@@ -137,6 +137,14 @@
                 margin-top: 15%;
                 margin-left: 30%;
             }
+            .btn_rent{
+                right:10px;
+              
+            }
+            .navbar nav{
+                justify-content:flex-end;
+            }
+           
         </style>
     </head>
 
@@ -151,14 +159,11 @@
                     <li>Banasthalite Online Exchange Market</li>
                 </ul>
             </div>
-            <form class="form-inline searchcat" action="b_index_category.jsp">
-            <input class="form-control mr-sm-2" name="category" type="search" placeholder="Enter a category" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
+            
             <div class="dropdown nav loginbutton">
-                <form action="buyer_rent_index.jsp">
-                    <button name="btn" class="rent_btn btn btn-outline-success my-2 mr-4 my-sm-0">Rent</button>
-                </form>
+                <form action="b_index.jsp">
+                    <button name="btn" class="btn_buy btn btn-outline-success my-2 mr-4 my-sm-0">Buy Items</button>
+            </form>
                 <button class="btn btn-outline-success my-2 my-sm-0 ">Login
                 </button>
                 <div class="dropdown-content">
@@ -199,8 +204,7 @@
         <div class="bg_container">
             <div class="vertical" id="vertical">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                <a href="b_index.jsp">Display Item</a>
-                <a href="wishlist.jsp">Wishlist</a>
+                <a href="buyer_rent_index.jsp">Display Item</a>
                 <a href="#Profile_Modal" data-toggle="modal">Profile</a>
                 <a href="Logout.jsp">Logout</a>
            
@@ -299,8 +303,8 @@
                         try {
                             DbConnection obj=new DbConnection();
                             Statement stmt1 = obj.c.createStatement();
-                            ResultSet rs = stmt1.executeQuery("select * from item where item_available='True" + "'");
-                             if (rs.next() == false) {%>
+                            ResultSet rs = stmt1.executeQuery("select * from rent ");
+                            if (rs.next() == false) {%>
                     <div class="noitem">
 
                         <i class="fa fa-frown-o" style="font-size:48px;"></i>
@@ -309,8 +313,8 @@
                         <p>Go to AddItem Menu</p>
                         <!--                            <a href=#mymodal data-toggle="modal"> Click here to Add Item</a>-->
                     </div>
-                    <%} else {  
-                    rs = stmt1.executeQuery("select * from item where item_available='True" + "'");
+                    <%} else {
+                    rs = stmt1.executeQuery("select * from rent ");
         while (rs.next()) {%>
                     <div class="col mb-2">
                         <div class="card h-100 cardh ">
@@ -318,19 +322,38 @@
                                 out.print("<img src=" + rs.getString(4) + " width='100%' height='300px' alt='Tulips'/>");
                             %>
                             <div class="card-body">
-                                <h5 class="card-title"><% out.print(rs.getString(2)); %></h5>
+                             
+                                <h5 class="card-title d-inline "><% out.print(rs.getString(2)); %></h5>
+                               <% if(rs.getBoolean(10)==false)
+                                {
+                                   %>
+                                   <h5 class="d-inline"><span class="badge rounded-pill bg-danger">Not Available</span></h5>                              <%  }
+                               else{%>
+                               <h5 class="d-inline "><span class="badge rounded-pill bg-success">Available</span>  </h5>
+                           <%} %> 
+                          
                                 <h6 class="card-text">&#8377 <%out.print(rs.getString(6));%></h6>
                                 <p class="card-text"><%out.print(rs.getString(5));%></p> 
-                                
-                                 <form class="adjust_button">
-                                    <button class="btn btn-primary card-text mr-4"  name="btn_wish" value="<%out.print(rs.getString(1));%>">
-                                        add to wishlist
-                                    </button>
-                                </form>
+                                    
+                            <%
+                                int item_id = Integer.parseInt(rs.getString(1));
+                                if(rs.getBoolean(10)==false){%>
+                            
+                                <p style="font-weight:600;color:green" class="card-text"> Issue Date: <%out.print(rs.getString(8));%></p> 
+                                    <p style="font-weight:600;color:red" class="card-text">Due Date : <%out.print(rs.getString(9));%></p> 
                                  
-                                <form class="adjust_button" action="buy.jsp">
+                              <%  }
+                               else{%>
+                                <p  class="card-text"> Issue Date:Not Rented yet</p> 
+                                    <p  class="card-text">Due Date : Not Rented yet</p>
+                                  
+                           <%} %>
+                             
+                                
+                                 
+                                <form class="adjust_button" action="rcontactup.jsp">
                                     <button class="btn btn-primary card-text" name="btn_buy" value="<% out.print(rs.getString(1)); %>">
-                                        Contact 
+                                        Contact
                                     </button>
 
                                 </form>
@@ -368,7 +391,7 @@ function closeNav() {
 <%
 
     if (request.getParameter("btn_wish") != null) {
- //       String u = session.getAttribute("userId").toString();
+        
         String primessage = "null";
         int id = Integer.parseInt(request.getParameter("btn_wish"));
         DbConnection obj = new DbConnection();

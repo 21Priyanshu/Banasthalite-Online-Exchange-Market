@@ -126,40 +126,43 @@
             </ul>
         </div>
         <div class="dropdown nav">
-                <button >Login</button>
-                <div class="dropdown-content dropdown-menu-right">
-                  <a class="dropdown-item" href="#mymodal2" data-toggle="modal">Buyer</a>
+                <form action="Index.jsp">
+                    <button name="btn" class="btn_buy btn btn-outline-success my-2 mr-4 my-sm-0">Sell Items</button>
+                </form>
+                <button class="btn btn-outline-success my-2 my-sm-0 ">Login</button>
+                <div class="dropdown-content dropdown-menu-right login_btn">
+                    <a href="#mymodal2" data-toggle="modal">Buyer</a>
                 </div>
                 <div class="modal" id="mymodal2">
-                        <div class="modal-dialog modal-dialog-centered">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
-                                    <h3 class="text-center">Buyer Login</h3>
-                                    <button type="button" class="close" data-dismiss="modal"> &times;</button> 
-                                </div>
-                                <div class="modal-body">
-                                    <form action="b login.jsp" method="post">
-                                        <div class="form-group row">
-                                            <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
-                                            <div class="col-sm-10">
-                                                <input type="text" name="uid" class="form-control" required>
-                                            </div>
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
+                                <h3 class="text-center ">Buyer Login</h3>
+                                <button type="button" class="close" data-dismiss="modal"> &times;</button> 
+                            </div>
+                            <div class="modal-body">
+                                <form action="b login.jsp" method="post">
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
+                                        <div class="col-sm-10">
+                                            <input type="text" name="uid" class="form-control" required>
                                         </div>
-                                        <div class="form-group row">
-                                            <label for="inputPassword" class="col-sm-2 col-form-label"><h6>Password </h6></label>
-                                            <div class="col-sm-10">
-                                                <input type="password" name="password" class="form-control" size=40 required/>
-                                            </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-2 col-form-label"><h6>Password </h6></label>
+                                        <div class="col-sm-10">
+                                            <input type="password" name="password" class="form-control" size=40 required/>
                                         </div>
-                                        <div class="modal-footer justify-content-center">
-                                            <button type="submit" class="btn btn-primary" > Login</button>
-                                        </div>
-                                    </form>
-                                </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="submit" class="btn btn-primary" > Login</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
+                </div>
                
             </div>
         </div>
@@ -167,9 +170,97 @@
             <div class="vertical" id="vertical">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a href=#mymodal data-toggle="modal">Add Item</a>
-                <a href="#modify_modal" data-toggle="modal">Display Item</a>
-                <a>Profile</a>
+                <a href="rindex.jsp">Display Item</a>
+                <a href="#Profile_Modal" data-toggle="modal">Profile</a>
                 <a href="Logout.jsp">Logout</a>
+                <!--Modal for displaying Profile-->
+                <div class="modal" id="Profile_Modal">
+                    <%
+                        String u = session.getAttribute("userId").toString();
+                        try {
+                            DbConnection obj = new DbConnection();
+                            Statement stmt1 = obj.c.createStatement();
+                            ResultSet rs = stmt1.executeQuery("select * from seller where uid='" + u + "'");
+                            while (rs.next()) {
+                    %>
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
+                                <h3 class="text-center">Profile</h3>
+                                <button type="button" class="close" data-dismiss="modal"> &times;</button> 
+                            </div>
+                            <div class="modal-body">
+                                <form action="modify_seller" >
+
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Name </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="sname" value="<% out.print(rs.getString(1)); %>" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle"  required >
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>ID </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="uid" value="<% out.print(rs.getString(2)); %>" class="form-control form-control-sm"  name="itemname" placeholder="e.g.Cycle" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Email </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="emailid" value="<%out.print(rs.getString(4));%>" class="form-control form-control-sm" name="idescription" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Course </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="course" value="<%out.print(rs.getString(5));%>" class="form-control form-control-sm" name="price" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Branch </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="branch" value="<%out.print(rs.getString(6));%>" class="form-control form-control-sm" name="category" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Semester </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="sem" value="<%out.print(rs.getString(7));%>" class="form-control form-control-sm" name="category" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Hostel </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="hostel" value="<%out.print(rs.getString(8));%>" class="form-control form-control-sm" name="category" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Room No. </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="roomno" value="<%out.print(rs.getString(9));%>" class="form-control form-control-sm" name="category" required>
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Contact No. </h6></label>
+                                        <div class="col-sm-7">
+                                            <input type="text" name="contact" value="<%out.print(rs.getString(10));%>" class="form-control form-control-sm" name="category" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer justify-content-center">
+                                        <button type="submit" class="btn btn-primary" >Modify</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <%
+//                        }
+                            }
+                        } catch (Exception ex) {
+                                                                out.println(ex);
+                                                            }%>
+                </div>
             </div>  
               <div class="modal" id="mymodal">
                     <div class="modal-dialog modal-dialog-centered">
@@ -225,11 +316,10 @@
         <div class="display" >
             <div class="row  row-cols-4 g-4 mt-0 mx-1" >
              <%
-                   String u=session.getAttribute("userId").toString();
+                   
                 try{
-                    Class.forName("org.apache.derby.jdbc.ClientDriver");
-                    Connection conn=DriverManager.getConnection("jdbc:derby://localhost:1527/Bolx");
-                    Statement stmt1=conn.createStatement();
+                    DbConnection obj=new DbConnection();
+                    Statement stmt1=obj.c.createStatement();
                     ResultSet rs=stmt1.executeQuery("select * from rent where uid='"+u+"'");
                     while(rs.next()){
              %>
@@ -244,30 +334,32 @@
                             <p class="card-text"><%out.print(rs.getString(5));%></p> 
                             
                             <%
+                                int item_id = Integer.parseInt(rs.getString(1));
                                 if(rs.getBoolean(10)==false)
                                 {%>
                                 <p style="font-weight:600;color:green" class="card-text"> Issue Date: <%out.print(rs.getString(8));%></p> 
                                     <p style="font-weight:600;color:red" class="card-text">Due Date : <%out.print(rs.getString(9));%></p> 
-                                    
+                                  
                               <%  }
-                               else
-                                {%>
+                               else{%>
                                 <p  class="card-text"> Issue Date:Not Rented yet</p> 
-                                    <p  class="card-text">Due Date : Not Rented yet</p> 
+                                    <p  class="card-text">Due Date : Not Rented yet</p>
+                                    
                            <%} %>
+                             <div style="display:flex">
                             <form action="rdelete" class="card-link">
                                 <button name="delete" value="<%out.print(rs.getString(1));%>" class="btn btn-primary d-inline-flex">
                                     Delete
                                 </button>
                             </form>
-                                    <br>
+                                    
                                     <% if(rs.getBoolean(10)==true)
                                     {
                                     %>
                                     
                                     
-                            <form action="" class="card-link">
-                                <button name="rent" value="<%out.print(rs.getString(1));%>" class="btn btn-primary d-inline-flex">
+                            <form class="card-link">
+                                <button name="rent" value="<%=item_id%>" class="btn btn-primary">
                                     Rent
                                 </button>
                             </form> 
@@ -277,12 +369,13 @@
                             {
                                 
                             %>
-                             <form action="" class="card-link">
-                                <button name="rent" style="background-color:green" value="<%out.print(rs.getString(1));%>" class="btn btn-primary d-inline-flex">
+                             <form class="card-link">
+                                <button name="rented" style="background-color:green" value="<%=item_id%>" class="btn btn-primary">
                                     Rented
                                 </button>
-                            </form> <%} %>
-                            
+                            </form> <%
+                                }%>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -318,8 +411,6 @@ function closeNav() {
             int id = Integer.parseInt(request.getParameter("rent"));
                    //String u = session.getAttribute("userId").toString();
                     try {
-                        Class.forName("org.apache.derby.jdbc.ClientDriver");
-                        Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/Bolx");
                         DbConnection obj=new DbConnection();
                         PreparedStatement ps=obj.c.prepareStatement("update rent set rissuedate=?,rduedate=?,ritem_available=? where ritemid=?");
                         SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
@@ -333,6 +424,35 @@ function closeNav() {
                         ps.setString(1,issue_date);
                         ps.setString(2,due_date);
                        ps.setBoolean(3, false);
+                       ps.setInt(4,id);
+                       int i=ps.executeUpdate();
+                       System.out.println("Successfully changed");
+                        
+                       if(i==1)
+                        response.sendRedirect("rindex.jsp");
+                       else
+                       response.sendRedirect("error.jsp");
+                     
+                        
+                     }
+                        
+                     catch (Exception ex)
+                    {
+                        out.println(ex);
+                    }
+                    
+        }
+        if(request.getParameter("rented")!=null)
+        {
+            int id = Integer.parseInt(request.getParameter("rented"));
+                   //String u = session.getAttribute("userId").toString();
+                    try {
+                        DbConnection obj=new DbConnection();
+                        PreparedStatement ps=obj.c.prepareStatement("update rent set rissuedate=?,rduedate=?,ritem_available=? where ritemid=?");
+                      
+                        ps.setString(1,null);
+                        ps.setString(2,null);
+                       ps.setBoolean(3, true);
                        ps.setInt(4,id);
                        int i=ps.executeUpdate();
                        System.out.println("Successfully changed");

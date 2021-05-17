@@ -1,3 +1,4 @@
+<%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -177,10 +178,17 @@
                 margin-top: 15%;
                 margin-left: 30%;
             }
+            .adjust_button{
+                margin:5px;
+            }
+            .e{
+                width: 100%;
+            }
             input {
                 border-style: none;
                 background-color: #eee;
             }
+            
         </style>
     </head>
     <body class="bg" id="body">
@@ -237,7 +245,7 @@
             <div class="vertical" id="vertical">
                 <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
                 <a href=#mymodal data-toggle="modal">Add Item</a>
-                <a href="Index1.jsp" >Display Item</a>
+                <a href="Index.jsp" >Display Item</a>
                 <a href="#Profile_Modal" data-toggle="modal">Profile</a>
                 <a href="Logout.jsp">Logout</a>
                 <!--Modal for displaying Profile-->
@@ -245,9 +253,8 @@
                     <%
                         String u = session.getAttribute("userId").toString();
                         try {
-                            Class.forName("org.apache.derby.jdbc.ClientDriver");
-                            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
-                            Statement stmt1 = conn.createStatement();
+                            DbConnection obj = new DbConnection();
+                            Statement stmt1 = obj.c.createStatement();
                             ResultSet rs = stmt1.executeQuery("select * from seller where uid='" + u + "'");
                             while (rs.next()) {
                     %>
@@ -384,9 +391,8 @@
                     <%
                         u = session.getAttribute("userId").toString();
                         try {
-                            Class.forName("org.apache.derby.jdbc.ClientDriver");
-                            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
-                            Statement stmt1 = conn.createStatement();
+                            DbConnection obj = new DbConnection();
+                            Statement stmt1 = obj.c.createStatement();
                             ResultSet rs = stmt1.executeQuery("select * from item where uid='" + u + "'");
                             if (rs.next() == false) {%>
                     <div class="noitem">
@@ -413,50 +419,40 @@
                                 <h6 class="card-text">&#8377 <%out.print(rs.getString(6));%></h6>
                                 <p class="card-text"><%out.print(rs.getString(5));%></p> 
                                 <!--<p class="card-text"><% //out.print(rs.getString(1));%></p>-->
-                                <%
-                                if(rs.getBoolean(8)==true){
-                                    
-                                %>
-                                <form action="Enable.jsp">
-                                    <button type="submit" class="btn btn-success" name="enable" value="<%=item_id%>"><i class="fa fa-check "></i>Enabled</button>
-                                </form>
                                 
-                                <%
-//                                    if(request.getParameter("enable")=="false"){
-//                                        out.print("<p>hi</p>");
-//                                        Statement stmt = conn.createStatement();
-//                                        stmt.executeUpdate("update item set item_available='false' where itemid=" + item_id);
-//                                        System.out.print("hi");
-//                                         response.sendRedirect("Index1.jsp");
-//                                    }
-                                    }
-                                   if(rs.getBoolean(8)==false){
-                                            
-                                %>
-                                <form action="Disable.jsp">
-                                         <button class="btn btn-danger" name="disable" value="<%=item_id%>"><i class="fa fa-times "></i>Disabled</button>
-                                    </form>
-                                 <%
-//                                       if(request.getParameter("disable")=="true"){
-//                                        Statement stmt = conn.createStatement();
-//                                        stmt.executeUpdate("update item set item_available='true' where itemid=" + Integer.parseInt("rs.getString(1)") + "");
-//                                         response.sendRedirect("Index1.jsp");
-//                                       }
-                                    }
-                                            
-                                %>
-                                <form action="delete" >
+                                <div style="display:flex">
+                                <form class="adjust_button d-grid gap-2 col-6 mx-auto" action="delete" >
                                     
                                     <button name="delete" value="<%out.print(rs.getString(1));%>" class="btn btn-primary indexbutton card-link">
                                         Delete
                                     </button>
                                 </form>
                                 <br>
-                                <form id='modify_form' method="post">
+                                <form class="adjust_button d-grid gap-2 col-6 mx-auto" id='modify_form' method="post">
                                     <button   type='submit' value="<%out.print(rs.getString(1));%>" name="modify"  class="btn btn-primary card-link" >
                                         Modify
                                     </button>
                                 </form>
+                                </div>
+                                <%
+                                if(rs.getBoolean(8)==true){
+                                    
+                                %>
+                                <form class="adjust_button d-grid gap-2" action="Enable.jsp">
+                                    <button type="submit" class="btn btn-success" name="enable" value="<%=item_id%>"><i class="fa fa-check "></i>Enabled</button>
+                                </form>
+                                
+                                <%
+             }
+                                   if(rs.getBoolean(8)==false){
+                                            
+                                %>
+                                <form class="adjust_button d-grid gap-2" action="Disable.jsp">
+                                         <button class="btn btn-danger" name="disable" value="<%=item_id%>"><i class="fa fa-times "></i>Disabled</button>
+                                    </form>
+                                 <%
+                 }
+                                %>
                             </div>
                         </div>
                     </div>  
