@@ -158,7 +158,14 @@
                 </ul>
             </div>
             <form class="form-inline searchcat" action="b_index_category.jsp">
-            <input class="form-control mr-sm-2" name="category" type="search" placeholder="Enter a category" aria-label="Search">
+            <select class="form-control mr-sm-2" name="category" type="search" placeholder="Enter a category" aria-label="Search">
+                <option value="None">Enter a category</option>
+                <option value="Books">Books</option>
+                <option value="Fan">Fan</option>
+                <option value="Cycle">Cycle</option>
+                <option value="Ed Items">Ed Items</option>
+                <option value="Others">Others</option>
+            </select>
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
             <div class="dropdown nav loginbutton">
