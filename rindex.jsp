@@ -300,7 +300,14 @@
                                     <div class="form-group row">
                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control form-control-sm" name="rcategory" required>
+                                            <select class="form-control form-control-sm" name="category" required>
+                                                <option value="None">Enter a category</option>
+                                                <option value="Books">Books</option>
+                                                <option value="Fan">Fan</option>
+                                                <option value="Cycle">Cycle</option>
+                                                <option value="Ed Items">Ed Items</option>
+                                                <option value="Others">Others</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="modal-footer justify-content-center">
@@ -356,24 +363,20 @@
                                     <% if(rs.getBoolean(10)==true)
                                     {
                                     %>
-                                    
-                                    
-                            <form class="card-link">
-                                <button name="rent" value="<%=item_id%>" class="btn btn-primary">
-                                    Rent
-                                </button>
-                            </form> 
+                               <form class="card-link" action="rent.jsp">
+                                    <button type="submit" class="btn btn-primary" name="rent" value="<%=item_id%>"> Rent</button>
+                                </form>    
+                             
                             <%
                                 }
                             else
                             {
                                 
                             %>
-                             <form class="card-link">
-                                <button name="rented" style="background-color:green" value="<%=item_id%>" class="btn btn-primary">
-                                    Rented
-                                </button>
-                            </form> <%
+                            <form class="card-link" action="rented.jsp">
+                                    <button type="submit" class="btn btn-success" name="rented" value="<%=item_id%>"> Rented</button>
+                                </form>
+                             <%
                                 }%>
                             </div>
                         </div>
@@ -405,73 +408,7 @@ function closeNav() {
   document.getElementById("vertical").style.display = "none";
 }
     </script>
-    <%
-        if(request.getParameter("rent")!=null)
-        {
-            int id = Integer.parseInt(request.getParameter("rent"));
-                   //String u = session.getAttribute("userId").toString();
-                    try {
-                        DbConnection obj=new DbConnection();
-                        PreparedStatement ps=obj.c.prepareStatement("update rent set rissuedate=?,rduedate=?,ritem_available=? where ritemid=?");
-                        SimpleDateFormat sdf=new SimpleDateFormat("dd/MM/yyyy");
-                        Calendar cal=new GregorianCalendar();
-                        Date date=new Date();
-                        String issue_date=(sdf.format(cal.getTime()));
-                        cal.add(Calendar.DAY_OF_MONTH,15);
-                        String due_date=(sdf.format(cal.getTime()));
-                        System.out.println(issue_date);
-                       System.out.println(due_date);
-                        ps.setString(1,issue_date);
-                        ps.setString(2,due_date);
-                       ps.setBoolean(3, false);
-                       ps.setInt(4,id);
-                       int i=ps.executeUpdate();
-                       System.out.println("Successfully changed");
-                        
-                       if(i==1)
-                        response.sendRedirect("rindex.jsp");
-                       else
-                       response.sendRedirect("error.jsp");
-                     
-                        
-                     }
-                        
-                     catch (Exception ex)
-                    {
-                        out.println(ex);
-                    }
-                    
-        }
-        if(request.getParameter("rented")!=null)
-        {
-            int id = Integer.parseInt(request.getParameter("rented"));
-                   //String u = session.getAttribute("userId").toString();
-                    try {
-                        DbConnection obj=new DbConnection();
-                        PreparedStatement ps=obj.c.prepareStatement("update rent set rissuedate=?,rduedate=?,ritem_available=? where ritemid=?");
-                      
-                        ps.setString(1,null);
-                        ps.setString(2,null);
-                       ps.setBoolean(3, true);
-                       ps.setInt(4,id);
-                       int i=ps.executeUpdate();
-                       System.out.println("Successfully changed");
-                        
-                       if(i==1)
-                        response.sendRedirect("rindex.jsp");
-                       else
-                       response.sendRedirect("error.jsp");
-                     
-                        
-                     }
-                        
-                     catch (Exception ex)
-                    {
-                        out.println(ex);
-                    }
-                    
-        }
-        %>
+    
         
     </body>
 </html>

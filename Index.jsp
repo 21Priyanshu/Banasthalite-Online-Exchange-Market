@@ -374,7 +374,14 @@
                                     <div class="form-group row">
                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control form-control-sm" name="category" required>
+                                            <select class="form-control form-control-sm" name="category" required>
+                                                <option value="None">Enter a category</option>
+                                                <option value="Books">Books</option>
+                                                <option value="Fan">Fan</option>
+                                                <option value="Cycle">Cycle</option>
+                                                <option value="Ed Items">Ed Items</option>
+                                                <option value="Others">Others</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="modal-footer justify-content-center">

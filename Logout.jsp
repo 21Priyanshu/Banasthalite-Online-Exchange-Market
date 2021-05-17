@@ -14,7 +14,7 @@
     <body>
         <%
             session.invalidate();
-            response.sendRedirect("MasterpReupdatd.html");
+            response.sendRedirect("MasterReupdatd.jsp");
         %>
     </body>
 </html>
