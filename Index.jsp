@@ -201,10 +201,11 @@
                     <li>Banasthalite Online Exchange Market</li>
                 </ul>
             </div>
-            <div class="dropdown nav">
+            <div class=" nav dropdown">
                 <form action="rindex.jsp">
                     <button name="btn" class="rent_btn btn btn-outline-success my-2 my-sm-0">Rent</button>
                 </form>
+                <div class="">
                 <button class="btn btn-outline-success my-2 my-sm-0 ">Login</button>
                 <div class="dropdown-content dropdown-menu-right login_btn">
                     <a href="#mymodal2" data-toggle="modal">Buyer</a>
@@ -238,6 +239,7 @@
                             </div>
                         </div>
                     </div>
+                </div>
                 </div>
             </div>
         </div>
@@ -372,9 +374,18 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
+                                        
+                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
                                         <div class="col-sm-7">
-                                            <input type="text" class="form-control form-control-sm" name="category" required>
+                                            <!--<input type="text" class="form-control form-control-sm" name="category" required>-->
+                                            <select class="form-control form-control-sm" name="category" required>
+                                                <option value="None">Enter a category</option>
+                                                <option value="Books">Books</option>
+                                                <option value="Fan">Fan</option>
+                                                <option value="Cycle">Cycle</option>
+                                                <option value="Ed Items">Ed Items</option>
+                                                <option value="Others">Others</option>
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="modal-footer justify-content-center">
