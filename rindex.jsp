@@ -38,6 +38,17 @@
                 overflow-x: hidden;
                 transition: 0.5s;
              }
+               .noitem{
+                position: fixed;
+                /*width: 1000px;*/
+                text-align: center;
+                background-color: rgba(0,0,0,0.4);
+                /*background-color: #555;*/
+                color: white;
+                padding: 30px;
+                margin-top: 15%;
+                margin-left: 30%;
+            }
             .vertical a {
                 padding: 8px 8px 8px 32px;
                 text-decoration: none;
@@ -129,10 +140,8 @@
                 <form action="Index.jsp">
                     <button name="btn" class="btn_buy btn btn-outline-success my-2 mr-4 my-sm-0">Sell Items</button>
                 </form>
-                <button class="btn btn-outline-success my-2 my-sm-0 ">Login</button>
-                <div class="dropdown-content dropdown-menu-right login_btn">
-                    <a href="#mymodal2" data-toggle="modal">Buyer</a>
-                </div>
+                    <button type="button" class="btn btn-outline-success my-2 my-sm-0 " data-toggle="modal" data-target="#mymodal2">Buyer</button>
+              
                 <div class="modal" id="mymodal2">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -142,7 +151,7 @@
                                 <button type="button" class="close" data-dismiss="modal"> &times;</button> 
                             </div>
                             <div class="modal-body">
-                                <form action="b login.jsp" method="post">
+                                <form action="buyer_login.jsp" method="post">
                                     <div class="form-group row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
                                         <div class="col-sm-10">
@@ -300,7 +309,7 @@
                                     <div class="form-group row">
                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
                                         <div class="col-sm-7">
-                                            <select class="form-control form-control-sm" name="category" required>
+                                            <select class="form-control form-control-sm" name="rcategory" >
                                                 <option value="None">Enter a category</option>
                                                 <option value="Books">Books</option>
                                                 <option value="Fan">Fan</option>
@@ -328,6 +337,18 @@
                     DbConnection obj=new DbConnection();
                     Statement stmt1=obj.c.createStatement();
                     ResultSet rs=stmt1.executeQuery("select * from rent where uid='"+u+"'");
+                    if (rs.next() == false) {%>
+                    <div class="noitem">
+
+                        <i class="fa fa-frown-o" style="font-size:48px;"></i>
+                        <h3>Oops!!</h3>
+                        <p>No Item Added!!!</p>
+                        <p>Go to AddItem Menu</p>
+                        <!--                            <a href=#mymodal data-toggle="modal"> Click here to Add Item</a>-->
+                    </div>
+                    <%} else {
+                        rs = stmt1.executeQuery("select * from rent where uid='"+u+"'");
+
                     while(rs.next()){
              %>
                  <div class="col ">
@@ -383,6 +404,7 @@
                     </div>
                 </div>
                 <%
+                    }
                            }
                               }
                     catch(Exception ex){

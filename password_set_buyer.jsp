@@ -98,7 +98,7 @@
             String pass=request.getParameter("password");
             String user=session.getAttribute("userid").toString();
             DbConnection obj = new DbConnection();
-            String sql1="update seller set password=? where uid='"+user+"'";
+            String sql1="update buyer set password=? where uid='"+user+"'";
             PreparedStatement ps=obj.c.prepareStatement(sql1);
             ps.setString(1,pass);
             if(ps.executeUpdate()>0)

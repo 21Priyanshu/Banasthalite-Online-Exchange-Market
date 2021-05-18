@@ -29,7 +29,7 @@
                 session.setAttribute("userId", u);
                 String loginmessage = "Removed from your wishlist!";
                 session.setAttribute("message", loginmessage);
-                response.sendRedirect("b_index4.jsp");
+                response.sendRedirect("b_index.jsp");
                 
             }
             else

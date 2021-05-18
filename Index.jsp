@@ -205,11 +205,8 @@
                 <form action="rindex.jsp">
                     <button name="btn" class="rent_btn btn btn-outline-success my-2 my-sm-0">Rent</button>
                 </form>
-                <div class="">
-                <button class="btn btn-outline-success my-2 my-sm-0 ">Login</button>
-                <div class="dropdown-content dropdown-menu-right login_btn">
-                    <a href="#mymodal2" data-toggle="modal">Buyer</a>
-                </div>
+                <button type="button" class="btn btn-outline-success my-2 my-sm-0 " data-toggle="modal" data-target="#mymodal2">Buyer</button>
+                
                 <div class="modal" id="mymodal2">
                     <div class="modal-dialog modal-dialog-centered">
                         <div class="modal-content">
@@ -219,7 +216,7 @@
                                 <button type="button" class="close" data-dismiss="modal"> &times;</button> 
                             </div>
                             <div class="modal-body">
-                                <form action="b login.jsp" method="post">
+                                <form action="buyer_login.jsp" method="post">
                                     <div class="form-group row">
                                         <label for="inputPassword" class="col-sm-2 col-form-label"><h6>UserID </h6></label>
                                         <div class="col-sm-10">
@@ -501,9 +498,8 @@
     if(request.getParameter("modify")!=null){%>
     <div id="myModal" class="modal1" >
                                         <% int id= Integer.parseInt(request.getParameter("modify"));
-                                            Class.forName("org.apache.derby.jdbc.ClientDriver");
-                                            Connection conn = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
-                                            Statement stmt1 = conn.createStatement();
+                                            DbConnection obj = new DbConnection();
+                                            Statement stmt1 =obj.c.createStatement();
                                             ResultSet rs = stmt1.executeQuery("select * from item where itemid=" + id + "");
                                             while(rs.next()){
                                         %>

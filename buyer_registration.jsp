@@ -3,7 +3,7 @@
     Created on : 9 Mar, 2021, 3:19:23 PM
     Author     : HP
 --%>
-<%@page import="myproject.flag"%>
+<%@page import="myprojectdb.flag"%>
 <%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>

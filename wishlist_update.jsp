@@ -157,11 +157,8 @@
                 <form action="buyer_rent_index.jsp">
                     <button name="btn" class="rent_btn btn btn-outline-success my-2 mr-4 my-sm-0">Rent</button>
                 </form>
-                <button class="btn btn-outline-success my-2 my-sm-0 ">Login
-                </button>
-                <div class="dropdown-content">
-                    <a href="#mymodal" data-toggle="modal">Seller</a>
-                </div>
+                <button type="button" class="btn btn-outline-success my-2 my-sm-0 " data-toggle="modal" data-target="#mymodal">Seller</button>
+              
                  <div class="modal" id="mymodal">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">

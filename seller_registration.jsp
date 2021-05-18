@@ -1,4 +1,4 @@
-<%@page import="myproject.flag"%>
+<%@page import="myprojectdb.flag"%>
 <%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.PreparedStatement"%>

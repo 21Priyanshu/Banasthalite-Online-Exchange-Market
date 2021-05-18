@@ -56,7 +56,7 @@
                         try {
                             DbConnection obj = new DbConnection();
                             Statement stmt=obj.c.createStatement();
-                            int result=stmt.executeUpdate("update item set item_available='false' where itemid=" + id); 
+//                            int result=stmt.executeUpdate("update item set item_available='false' where itemid=" + id); 
                             PreparedStatement ps = obj.c.prepareStatement("select * from seller where uid in(select uid from item where itemid=?)");
                             ps.setInt(1, id);
                             ResultSet rs = ps.executeQuery();
