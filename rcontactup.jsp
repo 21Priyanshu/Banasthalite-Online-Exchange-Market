@@ -15,10 +15,30 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
         <link href="buycss.css" type="text/css" rel="stylesheet"> 
-        <style></style>
+        <style>
+            *{
+                margin: 0px;
+            }
+            body{
+                background-color: blanchedalmond;
+            }
+            .nav{
+                background-color: #99ffcc;
+                padding: 15px;
+            }
+            h1{
+                
+        margin: 0px;
+    color:black;
+    
+    }
+        </style>
 
     </head>
     <body>
+        <div class="nav">
+            <h1 align="center">Contact Details</h1>
+        </div>
         <div class="back">
             <div class="container">
 
