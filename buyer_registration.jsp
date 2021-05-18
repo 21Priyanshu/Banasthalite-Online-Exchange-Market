@@ -26,8 +26,10 @@
             String hostel=request.getParameter("hostel");
             String rno=request.getParameter("roomno");
             String cno=request.getParameter("contact");
+            String question = request.getParameter("question");
+            String answer = request.getParameter("answer");  
             DbConnection obj=new DbConnection();
-            PreparedStatement ps=obj.c.prepareStatement("insert into buyer values(?,?,?,?,?,?,?,?,?,?)");
+            PreparedStatement ps=obj.c.prepareStatement("insert into buyer values(?,?,?,?,?,?,?,?,?,?,?,?)");
             ps.setString(1, bname);
             ps.setString(2, bvid);
             ps.setString(3, p);
@@ -38,6 +40,8 @@
             ps.setString(8, hostel);
             ps.setString(9, rno);
             ps.setString(10, cno);
+            ps.setString(11, question);
+            ps.setString(12, answer);
             int i=ps.executeUpdate();
             if(i==1){
                 flag obj1 = new flag();

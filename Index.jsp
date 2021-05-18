@@ -374,14 +374,7 @@
                                     <div class="form-group row">
                                         <label for="inputPassword" class="col-sm-3 col-form-label"><h6>Category </h6></label>
                                         <div class="col-sm-7">
-                                            <select class="form-control form-control-sm" name="category" required>
-                                                <option value="None">Enter a category</option>
-                                                <option value="Books">Books</option>
-                                                <option value="Fan">Fan</option>
-                                                <option value="Cycle">Cycle</option>
-                                                <option value="Ed Items">Ed Items</option>
-                                                <option value="Others">Others</option>
-                                            </select>
+                                            <input type="text" class="form-control form-control-sm" name="category" required>
                                         </div>
                                     </div>
                                     <div class="modal-footer justify-content-center">
@@ -509,7 +502,7 @@
                                                 <img src ="images\Banasthali_Vidyapeeth_Logo.png" height=40px width=40px /> &nbsp;
                                                 <h3 class="text-center mod">Modify Item</h3>                                    
                                                 <!--<span class="close" >&times;</span>-->
-                                                <a href="Index1.jsp" class="close">&times</a>
+                                                <a href="Index.jsp" class="close">&times</a>
 
                                             </div>
                                             <div class="modal_body">

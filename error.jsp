@@ -8,10 +8,12 @@
 <%@include file="header.html" %>
 <!DOCTYPE html>
 <html>
-    
-    <body bgcolor="red">
+    <head>
+        
+    </head>
+    <body>
         <h1>Invalid Username or Password</h1>
-        <a herf="index4.html">Login again</a>
+        <a href="MasterReupdatd.jsp">Login again</a>
         
     </body>
 </html>

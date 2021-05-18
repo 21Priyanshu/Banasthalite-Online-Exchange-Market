@@ -1,9 +1,3 @@
-<%-- 
-    Document   : MasterReupdatd
-    Created on : May 17, 2021, 9:31:21 PM
-    Author     : Lenovo
---%>
-
 <%@page import="myproject.flag"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!doctype html>
@@ -17,7 +11,6 @@
         <!-- Latest compiled and minified CSS -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-gtEjrD/SeCtmISkJkNUaaKMoLD0//ElJ19smozuHV6z3Iehds+3Ulb9Bn9Plx0x4" crossorigin="anonymous"></script>
-        
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
         <style>
             .message{
@@ -57,8 +50,8 @@
                                 Login
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href=#mymodal data-toggle="modal">Seller</a>
-                                <a class="dropdown-item" href=#mymodal2 data-toggle="modal" >Buyer</a> 
+                                <a class="dropdown-item" href=#Seller_Login_Modal data-toggle="modal">Seller</a>
+                                <a class="dropdown-item" href=#Buyer_Login_Modal data-toggle="modal" >Buyer</a> 
                             </div>
                         </li>
                         <li class="nav-item dropdown">
@@ -66,12 +59,12 @@
                                 SignUp
                             </a>
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href=#mymodalreg data-toggle="modal">Seller</a>
-                                <a class="dropdown-item" href=#mymodalreg2 data-toggle="modal">Buyer</a> 
+                                <a class="dropdown-item" href=#Seller_SignUP_Modal data-toggle="modal">Seller</a>
+                                <a class="dropdown-item" href=#Buyer_SignUP_Modal data-toggle="modal">Buyer</a> 
                             </div>
                         </li>
                     </ul>
-                    <div class="modal" id="mymodal">
+                    <div class="modal" id="Seller_Login_Modal">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -93,6 +86,9 @@
                                                 <input type="password" name="password" class="form-control" size=40 required/>
                                             </div>
                                         </div>
+                                         <div class="form-group row">
+                                            <a href="forget_password.jsp">Forget Password ?</a>
+                                        </div>
                                         <div class="modal-footer justify-content-center">
                                             <button type="submit" class="btn btn-primary" > Login</button>
                                         </div>
@@ -101,7 +97,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal" id="mymodal2">
+                    <div class="modal" id="Buyer_Login_Modal">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -123,6 +119,9 @@
                                                 <input type="password" name="password"  class="form-control" size=40 required/>
                                             </div>
                                         </div>
+                                        <div class="form-group row">
+                                            <a href="forget_password_buyer.jsp">Forget Password ?</a>
+                                        </div>
                                         <div class="modal-footer justify-content-center">
                                             <button type="submit" class="btn btn-primary" onClick="validate(this.form)" > Login</button>
                                         </div>
@@ -131,7 +130,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="modal" id="mymodalreg">
+                    <div class="modal" id="Seller_SignUP_Modal">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -141,7 +140,7 @@
                                 </div>
                                 <div class="modal-body">
                                     <form action="seller_registration.jsp" onsubmit= "return validate()">
-                                        <div class="form-group row">
+                                         <div class="form-group row">
                                             <label for="name" class="col-sm-2 col-form-label"> <h6> Name </h6></label>
                                             <div class="col-sm-10">	
                                                 <input type="text" name="sname" class="form-control" required>
@@ -207,6 +206,18 @@
                                                 <input type="tel" name="contact" id="contact" class="form-control"  pattern="[1-9]{1}[0-9]{9}" required>
                                             </div> 
                                         </div> 
+                                        <div class="form-group row">
+                                            <label for="question" class="col-sm-2 col-form-label" > <h6> Security Question</h6></label>
+                                            <div class="col-sm-10">	
+                                                <input type="text" name="question" id="question" class="form-control"  required>
+                                            </div> 
+                                        </div> 
+                                        <div class="form-group row">
+                                            <label for="answer" class="col-sm-2 col-form-label" > <h6> Security Answer</h6></label>
+                                            <div class="col-sm-10">	
+                                                <input type="text" name="answer" id="answer" class="form-control"  required>
+                                            </div> 
+                                        </div> 
                                         <div class="modal-footer justify-content-center">
                                             <button type="submit" class="btn btn-primary " onClick="validate(this.form)" > Sign UP</button>
                                         </div>
@@ -215,7 +226,7 @@
                             </div>
                          </div>
                     </div>
-                    <div class="modal" id="mymodalreg2">
+                    <div class="modal" id="Buyer_SignUP_Modal">
                         <div class="modal-dialog modal-dialog-centered">
                             <div class="modal-content">
                                 <div class="modal-header">
@@ -289,6 +300,18 @@
                                             <label for="contact" class="col-sm-2 col-form-label" > <h6> Mobile </h6></label>
                                             <div class="col-sm-10">	
                                                 <input type="tel" name="contact" id="contact1" class="form-control"  pattern="[1-9]{1}[0-9]{9}" required>
+                                            </div> 
+                                        </div> 
+                                         <div class="form-group row">
+                                            <label for="question" class="col-sm-2 col-form-label" > <h6> Security Question</h6></label>
+                                            <div class="col-sm-10">	
+                                                <input type="text" name="question" id="question" class="form-control"  required>
+                                            </div> 
+                                        </div> 
+                                        <div class="form-group row">
+                                            <label for="answer" class="col-sm-2 col-form-label" > <h6> Security Answer</h6></label>
+                                            <div class="col-sm-10">	
+                                                <input type="text" name="answer" id="answer" class="form-control"  required>
                                             </div> 
                                         </div> 
                                         <div class="modal-footer justify-content-center">
