@@ -1,3 +1,4 @@
+<%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
@@ -76,8 +77,9 @@
 </head>
 <body>
     <form method="Post" onsubmit="return validate()">
+        <div class="nav">
 	<h1 align="center"> Password Reset</h1>
-	<hr style="width:100%;text-align:left;margin-left:0">
+        </div>
 		<center>
 	<div class="container">
 	<h4> Enter New Password</h4>
@@ -95,11 +97,9 @@
         {
             String pass=request.getParameter("password");
             String user=session.getAttribute("userid").toString();
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            java.sql.Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
-            Statement st= con.createStatement();
+            DbConnection obj = new DbConnection();
             String sql1="update seller set password=? where uid='"+user+"'";
-            PreparedStatement ps=con.prepareStatement(sql1);
+            PreparedStatement ps=obj.c.prepareStatement(sql1);
             ps.setString(1,pass);
             if(ps.executeUpdate()>0)
             {

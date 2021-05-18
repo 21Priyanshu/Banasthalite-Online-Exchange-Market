@@ -1,3 +1,4 @@
+<%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.PreparedStatement"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.ResultSet"%>
@@ -96,11 +97,9 @@
         {
             String pass=request.getParameter("password");
             String user=session.getAttribute("userid").toString();
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-            java.sql.Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
-            Statement st= con.createStatement();
-            String sql1="update buyer set password=? where uid='"+user+"'";
-            PreparedStatement ps=con.prepareStatement(sql1);
+            DbConnection obj = new DbConnection();
+            String sql1="update seller set password=? where uid='"+user+"'";
+            PreparedStatement ps=obj.c.prepareStatement(sql1);
             ps.setString(1,pass);
             if(ps.executeUpdate()>0)
             {

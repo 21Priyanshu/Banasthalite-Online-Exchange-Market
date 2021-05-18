@@ -1,3 +1,4 @@
+<%@page import="myproject.DbConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.DriverManager"%>
@@ -81,9 +82,8 @@
         {
             String userid=request.getParameter("uid");
             session.setAttribute("User_Id",userid);
-            Class.forName("org.apache.derby.jdbc.ClientDriver");
-    java.sql.Connection con = DriverManager.getConnection("jdbc:derby://localhost:1527/priyanshu");
-     Statement st= con.createStatement();
+            DbConnection obj = new DbConnection();
+            Statement st = obj.c.createStatement();
             ResultSet rs=st.executeQuery("select * from buyer where uid='"+userid+"'");
             if(rs.next())
             {
