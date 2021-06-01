@@ -20,7 +20,7 @@ purchasing, selling and renting goods.
 <h4>Buyer Login Form </h4>
 ![git4](https://user-images.githubusercontent.com/63269607/120349210-89e5bc80-c31b-11eb-82bc-527bc90fdde9.png)
 
-<h4><contact Us Interface> </h4>
+<h4>Contact Us Interface </h4>
   ![image](https://user-images.githubusercontent.com/63269607/120361393-67f23700-c327-11eb-8eb6-4c599cc34852.png)
 
   <h4>Seller Home Page </h4>
