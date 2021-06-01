@@ -7,6 +7,8 @@ among the students for purpose of exchanging goods and indirectly help them in
 purchasing, selling and renting goods.
 
 <h4>Seller Sign Up</h4>
+![git1](https://user-images.githubusercontent.com/63269607/120348844-307d8d80-c31b-11eb-8efa-3978cad7d22f.png)
+
 ![image](https://user-images.githubusercontent.com/63269607/120347621-14c5b780-c31a-11eb-852b-73fc8bf5d3ad.png)
 
 <h4>Buyer Sign Up</h4>
