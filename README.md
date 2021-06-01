@@ -6,6 +6,9 @@ buyer or both but in only one role at a time.Our website will act as a medium
 among the students for purpose of exchanging goods and indirectly help them in
 purchasing, selling and renting goods.
 
+<h4> Master Page</h4>
+![image](https://user-images.githubusercontent.com/63269607/120363055-59a51a80-c329-11eb-911d-11d110321574.png)
+
 <h4>Seller Sign Up</h4>
 ![git1](https://user-images.githubusercontent.com/63269607/120348844-307d8d80-c31b-11eb-8efa-3978cad7d22f.png)
 
