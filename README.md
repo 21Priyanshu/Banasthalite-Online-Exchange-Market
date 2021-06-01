@@ -9,14 +9,14 @@ purchasing, selling and renting goods.
 <h4>Seller Sign Up</h4>
 ![git1](https://user-images.githubusercontent.com/63269607/120348844-307d8d80-c31b-11eb-8efa-3978cad7d22f.png)
 
-![image](https://user-images.githubusercontent.com/63269607/120347621-14c5b780-c31a-11eb-852b-73fc8bf5d3ad.png)
-
 <h4>Buyer Sign Up</h4>
-![image](https://user-images.githubusercontent.com/63269607/120348115-800f8980-c31a-11eb-9884-c4e322d423de.png)
+![git2](https://user-images.githubusercontent.com/63269607/120349069-66227680-c31b-11eb-97b6-e6dd83115634.png)
+
 
 <h4>Seller Login Form</h4>
-![image](https://user-images.githubusercontent.com/63269607/120348219-9cabc180-c31a-11eb-8348-8b899554576d.png)
+![git3](https://user-images.githubusercontent.com/63269607/120349185-85210880-c31b-11eb-88c3-cff67bc2de6e.png)
+
 
 <h4>Buyer Login Form </h4>
-![image](https://user-images.githubusercontent.com/63269607/120348372-c1079e00-c31a-11eb-9339-0fe99d28145a.png)
+![git4](https://user-images.githubusercontent.com/63269607/120349210-89e5bc80-c31b-11eb-82bc-527bc90fdde9.png)
 
