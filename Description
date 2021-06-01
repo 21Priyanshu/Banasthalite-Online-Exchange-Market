@@ -5,3 +5,13 @@ buyers(both are the students of Banasthali).A student can act as a seller, or as
 buyer or both but in only one role at a time.Our website will act as a medium
 among the students for purpose of exchanging goods and indirectly help them in
 purchasing, selling and renting goods.
+It is a dynamic website developed using
+JSP. The content displayed on the website is dynamically generated, depending on
+the requests sent from the client’s browser. It uses both client-side scripting and
+server-side scripting. Client-side scripting is achieved by the use of HTML, CSS
+and JavaScript. It is used for customizing the display (different for each student).
+Server- side scripting is achieved through JSP and is used for form processing,
+building and displaying pages created from the database. The aim of this project
+is to reduce the efforts of selling and buying among students and provide them the
+ease for renting their items as well. Students can easily search for items of their
+need and accordingly interact with the seller.
