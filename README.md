@@ -34,3 +34,9 @@ purchasing, selling and renting goods.
 
   <h4> Buyer side Exploration</h4>
   ![image](https://user-images.githubusercontent.com/63269607/120362080-4e052400-c328-11eb-8a21-37af3616ee46.png)
+  
+  <h4>Rent Interface(Seller Side) </h4>
+  ![image](https://user-images.githubusercontent.com/63269607/120362625-e3081d00-c328-11eb-8db7-8ad4bb705177.png)
+
+   <h4>Buyer Side </h4>
+   ![image](https://user-images.githubusercontent.com/63269607/120362517-c8ce3f00-c328-11eb-9c31-78ca87649032.png)
