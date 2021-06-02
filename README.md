@@ -1,4 +1,5 @@
-‘Banasthalite Online Exchange Market’ is a web application for easy exchange of
+#About
+**Banasthalite Online Exchange Market** is a web application for easy exchange of
 goods i.e. second hand books,stationary materials etc among students of
 Banasthali. The website is developed for two types of users – sellers and
 buyers(both are the students of Banasthali).A student can act as a seller, or as a
@@ -9,18 +10,25 @@ is to reduce the efforts of selling and buying among students and provide them t
 ease for renting their items as well. Students can easily search for items of their
 need and accordingly interact with the seller.
 
+##Techenology Used
+It is a dynamic website developed using
+JSP. The content displayed on the website is dynamically generated, depending on
+the requests sent from the client’s browser. It uses both client-side scripting and
+server-side scripting. Client-side scripting is achieved by the use of HTML, CSS
+and JavaScript. It is used for customizing the display (different for each student).
+Server- side scripting is achieved through JSP and is used for form processing,
+building and displaying pages created from the database.
+
 <h4> Master Page</h4>
-![image](https://user-images.githubusercontent.com/63269607/120363055-59a51a80-c329-11eb-911d-11d110321574.png)
+![] (images/1.png)
 
-<h4>Seller Sign Up</h4>
-![git1](https://user-images.githubusercontent.com/63269607/120348844-307d8d80-c31b-11eb-8efa-3978cad7d22f.png)
-
-<h4>Buyer Sign Up</h4>
-![git2](https://user-images.githubusercontent.com/63269607/120349069-66227680-c31b-11eb-97b6-e6dd83115634.png)
-
+<h4>About Us</h4>
+![] (images/2.png)
+<h4>Contact Us</h4>
+![] (images/3.png)
 
 <h4>Seller Login Form</h4>
-![git3](https://user-images.githubusercontent.com/63269607/120349185-85210880-c31b-11eb-88c3-cff67bc2de6e.png)
+![] (images/4.png)
 
 
 <h4>Buyer Login Form </h4>
