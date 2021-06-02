@@ -21,7 +21,7 @@ building and displaying pages created from the database.
 
 ## How it works?
 <h4> Master Page</h4>
-First of all, we run the server using Netbeans GlassFish Server Open Source Edition  4.1.1 and then open this on browser. The master page look like this
+First of all, we run the server using Netbeans GlassFish Server Open Source Edition  4.1.1 and then open this on browser. The master page look like this.
 There are five sections on this page
 
 * About Us
@@ -33,7 +33,7 @@ There are five sections on this page
 <img src="images/1.png">
 
 <h4>About Us</h4>
-Once you click on About us section, you will be redirected to about us within the same page. It is brief Description of our website
+Once you click on About us section, you will be redirected to about us within the same page. It is a brief Description of our website.
 <br></br>
 <img src="images/2.png">
 
