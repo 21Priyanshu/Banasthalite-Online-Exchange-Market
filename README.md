@@ -10,7 +10,7 @@ is to reduce the efforts of selling and buying among students and provide them t
 ease for renting their items as well. Students can easily search for items of their
 need and accordingly interact with the seller.
 
-## Techenology Used
+## Technology Used
 It is a dynamic website developed using
 JSP. The content displayed on the website is dynamically generated, depending on
 the requests sent from the client’s browser. It uses both client-side scripting and
